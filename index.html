@@ -1,0 +1,2560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kortexaa — Product UI Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --apple-blue: #0071E3;
+  --apple-blue-dark: #0058b0;
+  --apple-green: #30D158;
+  --apple-orange: #FF9F0A;
+  --apple-red: #FF375F;
+  --apple-purple: #BF5AF2;
+  --apple-teal: #5AC8FA;
+  --bg: #FFFFFF;
+  --bg2: #F5F5F7;
+  --bg3: #FBFBFD;
+  --text: #1D1D1F;
+  --text2: #6E6E73;
+  --text3: #86868B;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 80px rgba(0,0,0,0.14);
+  --shadow-blue: 0 8px 32px rgba(0,113,227,0.22);
+  --r: 18px;
+  --r-sm: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', -apple-system, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── GLOBAL NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; color: var(--text); }
+.nav-logo em { color: var(--apple-blue); font-style: normal; }
+.nav-tabs { display: flex; gap: 4px; }
+.nav-tab {
+  padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 500;
+  color: var(--text2); cursor: pointer; border: none; background: transparent;
+  transition: all 0.2s; font-family: inherit; white-space: nowrap;
+}
+.nav-tab:hover { background: var(--bg2); color: var(--text); }
+.nav-tab.active { background: var(--apple-blue); color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-badge {
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(48,209,88,0.12); color: #1a8c3a;
+  font-size: 11px; font-weight: 600; border: 1px solid rgba(48,209,88,0.2);
+}
+
+/* ─── SCREEN WRAPPER ─── */
+.screen {
+  display: none; min-height: 100vh;
+  padding-top: 56px;
+}
+.screen.active { display: block; }
+
+/* ─── HERO / TITLE BANNER ─── */
+.screen-banner {
+  background: linear-gradient(135deg, var(--bg2) 0%, #fff 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 64px 40px;
+  position: relative; overflow: hidden;
+}
+.screen-banner::before {
+  content: '';
+  position: absolute; top: -80px; right: -80px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.banner-eyebrow {
+  font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--apple-blue); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.banner-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--apple-blue);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity:1;transform:scale(1); } 50% { opacity:0.4;transform:scale(0.7); } }
+.screen-banner h1 {
+  font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+  letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 12px;
+}
+.screen-banner h1 em { color: var(--apple-blue); font-style: normal; }
+.screen-banner p {
+  font-size: 15px; font-weight: 300; color: var(--text2);
+  max-width: 600px; line-height: 1.6;
+}
+.banner-chips {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px;
+}
+.chip {
+  padding: 5px 14px; border-radius: 100px; font-size: 11px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.chip-blue { background: rgba(0,113,227,0.08); color: var(--apple-blue); border: 1px solid rgba(0,113,227,0.15); }
+.chip-green { background: rgba(48,209,88,0.08); color: #1a8c3a; border: 1px solid rgba(48,209,88,0.15); }
+.chip-orange { background: rgba(255,159,10,0.08); color: #b06000; border: 1px solid rgba(255,159,10,0.15); }
+.chip-red { background: rgba(255,55,95,0.08); color: #c00030; border: 1px solid rgba(255,55,95,0.15); }
+.chip-purple { background: rgba(191,90,242,0.08); color: #7b2fb5; border: 1px solid rgba(191,90,242,0.15); }
+
+/* ─── CONTENT AREA ─── */
+.screen-body { padding: 40px 64px 80px; }
+
+/* ─── GRID SYSTEMS ─── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-sidebar { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+.grid-main-side { display: grid; grid-template-columns: 1fr 360px; gap: 24px; }
+
+/* ─── CARDS ─── */
+.card {
+  background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm); padding: 24px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.card-title {
+  font-size: 11px; font-weight: 600; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-title-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.8px; }
+.h2 em { color: var(--apple-blue); font-style: normal; }
+.h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 8px; }
+.body-text { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.section-gap { margin-top: 32px; }
+.label-sm { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ─── KPI METRIC CARD ─── */
+.kpi-card {
+  background: #fff; border-radius: var(--r); border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm); padding: 22px 24px;
+  transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden;
+}
+.kpi-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--kpi-color, var(--apple-blue)); border-radius: var(--r) var(--r) 0 0;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.kpi-label { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.kpi-value { font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--text); }
+.kpi-value em { color: var(--kpi-color, var(--apple-blue)); font-style: normal; }
+.kpi-sub { font-size: 12px; color: var(--text3); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+.kpi-trend-up { color: var(--apple-green); font-weight: 600; }
+.kpi-trend-down { color: var(--apple-red); font-weight: 600; }
+
+/* ─── SCORE RING ─── */
+.score-ring-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.score-ring {
+  width: 80px; height: 80px; border-radius: 50%; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.score-ring-inner {
+  font-size: 20px; font-weight: 700; color: var(--text);
+}
+.score-ring-label { font-size: 11px; color: var(--text3); font-weight: 500; }
+
+/* ─── BADGE ─── */
+.badge {
+  padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.badge-green { background: rgba(48,209,88,0.12); color: #1a8c3a; }
+.badge-orange { background: rgba(255,159,10,0.12); color: #b06000; }
+.badge-red { background: rgba(255,55,95,0.12); color: #c00030; }
+.badge-blue { background: rgba(0,113,227,0.10); color: #0058b0; }
+.badge-purple { background: rgba(191,90,242,0.12); color: #7b2fb5; }
+.badge-gray { background: var(--bg2); color: var(--text2); }
+
+/* ─── PROGRESS BAR ─── */
+.progress-wrap { background: #E5E5EA; border-radius: 4px; height: 6px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+/* ─── TIMELINE / LIST ITEMS ─── */
+.list-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row-icon {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 14px;
+}
+
+/* ─── WAVEFORM ─── */
+.waveform {
+  display: flex; align-items: center; gap: 2px; height: 32px;
+}
+.wave-bar {
+  width: 3px; border-radius: 2px; background: var(--apple-blue);
+  animation: wave-anim 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(1) { animation-delay: 0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { animation-delay: 0.6s; }
+.wave-bar:nth-child(8) { animation-delay: 0.5s; }
+.wave-bar:nth-child(9) { animation-delay: 0.4s; }
+.wave-bar:nth-child(10) { animation-delay: 0.3s; }
+.wave-bar:nth-child(11) { animation-delay: 0.2s; }
+.wave-bar:nth-child(12) { animation-delay: 0.1s; }
+@keyframes wave-anim {
+  0%,100% { height: 6px; opacity: 0.4; }
+  50% { height: 28px; opacity: 1; }
+}
+
+/* ─── SIRI ORB (mini) ─── */
+.siri-orb { position: relative; width: 56px; height: 56px; flex-shrink: 0; }
+.siri-r { position: absolute; inset: 0; border-radius: 50%; animation: siri-spin 4s linear infinite; }
+.siri-r:nth-child(1) { background: conic-gradient(from 0deg,#0071E3,#30D158,#BF5AF2,#FF9F0A,#0071E3); filter: blur(2px); }
+.siri-r:nth-child(2) { inset: 3px; background: conic-gradient(from 180deg,#30D158,#0071E3,#FF375F,#0071E3); filter: blur(2px); opacity:0.6; animation-direction:reverse; animation-duration:6s; }
+.siri-inner { position: absolute; inset: 6px; border-radius: 50%; background: linear-gradient(135deg,#e8f4ff,#fff); display:flex;align-items:center;justify-content:center; font-size:16px; }
+@keyframes siri-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+/* ─── SIRI LARGE ─── */
+.siri-large { position: relative; width: 100px; height: 100px; }
+.siri-large .siri-r:nth-child(1) { filter: blur(3px); }
+.siri-large .siri-r:nth-child(2) { inset: 4px; filter: blur(3px); }
+.siri-large .siri-inner { inset: 8px; font-size: 24px; }
+
+/* ─── CODE SUGGESTION PILL ─── */
+.code-pill {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 12px 16px; margin-bottom: 10px;
+  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.code-pill:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+.code-pill::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--pill-color, var(--apple-blue));
+}
+.code-pill-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.code-pill-code { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--text); }
+.code-pill-desc { font-size: 12px; color: var(--text2); }
+.code-pill-footer { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.conf-bar-wrap { flex: 1; background: #E5E5EA; border-radius: 2px; height: 3px; overflow: hidden; }
+.conf-bar-fill { height: 100%; border-radius: 2px; background: var(--apple-green); }
+.conf-pct { font-size: 11px; font-weight: 600; color: var(--text2); }
+.delta { font-size: 11px; font-weight: 700; }
+.delta-pos { color: var(--apple-green); }
+.delta-neg { color: var(--apple-red); }
+
+/* ─── CODE ACTION BUTTONS ─── */
+.code-actions { display: flex; gap: 6px; }
+.btn-accept {
+  padding: 5px 14px; border-radius: 100px; border: none; cursor: pointer;
+  background: rgba(48,209,88,0.12); color: #1a8c3a; font-size: 11px; font-weight: 600;
+  font-family: inherit; transition: background 0.2s;
+}
+.btn-accept:hover { background: rgba(48,209,88,0.22); }
+.btn-reject {
+  padding: 5px 14px; border-radius: 100px; border: none; cursor: pointer;
+  background: rgba(255,55,95,0.08); color: #c00030; font-size: 11px; font-weight: 600;
+  font-family: inherit; transition: background 0.2s;
+}
+.btn-edit {
+  padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border); cursor: pointer;
+  background: transparent; color: var(--text2); font-size: 11px; font-weight: 500;
+  font-family: inherit;
+}
+
+/* ─── ALERT CARD ─── */
+.alert-card {
+  border-radius: var(--r-sm); padding: 14px 16px; margin-bottom: 10px;
+  display: flex; gap: 12px; align-items: flex-start;
+  border: 1px solid transparent;
+}
+.alert-card.high { background: rgba(255,55,95,0.06); border-color: rgba(255,55,95,0.15); }
+.alert-card.medium { background: rgba(255,159,10,0.06); border-color: rgba(255,159,10,0.15); }
+.alert-card.low { background: rgba(48,209,88,0.05); border-color: rgba(48,209,88,0.12); }
+.alert-icon { font-size: 18px; flex-shrink: 0; }
+.alert-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.alert-body { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.alert-actions { margin-top: 8px; display: flex; gap: 6px; }
+.btn-mitigate {
+  padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600;
+  border: none; cursor: pointer; font-family: inherit; background: var(--apple-blue); color: #fff;
+  transition: background 0.2s;
+}
+.btn-mitigate:hover { background: var(--apple-blue-dark); }
+.btn-dismiss {
+  padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 500;
+  border: 1px solid var(--border); cursor: pointer; font-family: inherit; background: transparent; color: var(--text2);
+}
+
+/* ─── TRANSCRIPT ─── */
+.transcript-bubble {
+  border-radius: 12px; padding: 10px 14px; margin-bottom: 8px;
+  font-size: 13px; line-height: 1.6;
+}
+.bubble-clinician { background: var(--bg2); }
+.bubble-ai {
+  background: rgba(0,113,227,0.07); border-left: 3px solid var(--apple-blue);
+  color: #0058b0; font-size: 12px;
+}
+.bubble-tag { font-size: 9px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.bubble-flag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 100px;
+  background: rgba(255,159,10,0.1); color: #b06000;
+  font-size: 10px; font-weight: 600; margin-top: 4px;
+}
+
+/* ─── BENCHMARK ─── */
+.bench-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.bench-row:last-child { border-bottom: none; }
+.bench-name { font-size: 13px; font-weight: 500; color: var(--text); min-width: 140px; }
+.bench-bar-wrap { flex: 1; background: #E5E5EA; border-radius: 4px; height: 8px; overflow: hidden; }
+.bench-bar-fill { height: 100%; border-radius: 4px; }
+.bench-value { font-size: 13px; font-weight: 600; min-width: 44px; text-align: right; }
+.bench-label { font-size: 10px; color: var(--text3); min-width: 64px; text-align: right; }
+
+/* ─── TABLE ─── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th {
+  text-align: left; padding: 10px 14px;
+  font-size: 11px; font-weight: 600; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 1px;
+  border-bottom: 1px solid var(--border); background: var(--bg2);
+}
+.data-table td {
+  padding: 12px 14px; font-size: 13px; color: var(--text2);
+  border-bottom: 1px solid var(--border);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(0,113,227,0.02); }
+.data-table .mono { font-family: 'DM Mono', monospace; font-size: 12px; }
+
+/* ─── HEAT MAP DOTS ─── */
+.heatmap-row { display: flex; gap: 4px; margin-bottom: 4px; }
+.heat-dot {
+  width: 14px; height: 14px; border-radius: 3px;
+  transition: transform 0.2s;
+}
+.heat-dot:hover { transform: scale(1.3); }
+.h0 { background: #F2F2F7; }
+.h1 { background: rgba(0,113,227,0.15); }
+.h2 { background: rgba(0,113,227,0.35); }
+.h3 { background: rgba(0,113,227,0.55); }
+.h4 { background: rgba(0,113,227,0.80); }
+.h5 { background: var(--apple-blue); }
+
+/* ─── SPARKLINE (fake SVG) ─── */
+.sparkline { width: 80px; height: 24px; }
+
+/* ─── RISK GAUGE ─── */
+.gauge-wrap { text-align: center; }
+.gauge-value { font-size: 42px; font-weight: 800; letter-spacing: -2px; }
+.gauge-label { font-size: 12px; color: var(--text3); margin-top: 4px; }
+
+/* ─── BIG METRIC ─── */
+.big-metric { font-size: 48px; font-weight: 800; letter-spacing: -2px; }
+.big-metric em { color: var(--apple-blue); font-style: normal; }
+
+/* ─── EXEC CHART BARS ─── */
+.chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; }
+.chart-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.chart-bar { width: 20px; border-radius: 3px 3px 0 0; transition: height 0.5s ease; }
+.chart-bar-label { font-size: 9px; color: var(--text3); }
+
+/* ─── SWITCH TOGGLE ─── */
+.toggle {
+  width: 36px; height: 20px; border-radius: 10px; background: #E5E5EA;
+  position: relative; cursor: pointer; transition: background 0.3s; flex-shrink: 0;
+}
+.toggle.on { background: var(--apple-green); }
+.toggle::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 14px; height: 14px; border-radius: 50%; background: #fff;
+  transition: transform 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.toggle.on::after { transform: translateX(16px); }
+
+/* ─── PERMISSION ROW ─── */
+.perm-row {
+  display: flex; align-items: center; gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.perm-row:last-child { border-bottom: none; }
+.perm-info { flex: 1; }
+.perm-name { font-size: 13px; font-weight: 500; }
+.perm-desc { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+/* ─── LOG ROW ─── */
+.log-row {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); font-size: 12px;
+}
+.log-row:last-child { border-bottom: none; }
+.log-time { font-family: 'DM Mono', monospace; color: var(--text3); min-width: 80px; font-size: 11px; }
+.log-event { color: var(--text); }
+.log-actor { color: var(--apple-blue); font-weight: 500; }
+
+/* ─── FLYWHEEL MINI ─── */
+.mini-flywheel {
+  width: 120px; height: 120px; border-radius: 50%; position: relative;
+  margin: 0 auto; display: flex; align-items: center; justify-content: center;
+}
+.mfw-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(0,113,227,0.15);
+  animation: siri-spin 20s linear infinite;
+}
+.mfw-ring:nth-child(2) { inset: 12px; border-color: rgba(48,209,88,0.2); animation-duration: 12s; animation-direction: reverse; }
+.mfw-center { position: relative; z-index: 2; text-align: center; }
+.mfw-val { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+.mfw-val em { color: var(--apple-green); font-style: normal; }
+.mfw-lbl { font-size: 9px; color: var(--text3); letter-spacing: 0.5px; }
+
+/* ─── MISSED OPPORTUNITY ROW ─── */
+.missed-row {
+  background: #fff; border-radius: var(--r-sm); border: 1px solid var(--border);
+  padding: 14px 16px; margin-bottom: 10px; box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; gap: 14px;
+  transition: transform 0.2s;
+}
+.missed-row:hover { transform: translateX(4px); }
+.missed-code { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: var(--text); min-width: 80px; }
+.missed-desc { flex: 1; font-size: 13px; color: var(--text2); }
+.missed-amount { font-size: 15px; font-weight: 700; color: var(--apple-red); }
+.missed-how { font-size: 11px; color: var(--text3); text-align: right; }
+
+/* ─── COMPLIANCE SEVERITY DOT ─── */
+.sev-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.sev-high { background: var(--apple-red); }
+.sev-med { background: var(--apple-orange); }
+.sev-low { background: var(--apple-green); }
+
+/* ─── FEEDBACK ROW ─── */
+.fb-row {
+  display: flex; align-items: center; gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.fb-row:last-child { border-bottom: none; }
+.fb-accepted { color: var(--apple-green); font-size: 16px; }
+.fb-rejected { color: var(--apple-red); font-size: 16px; }
+.fb-code { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text); min-width: 90px; }
+.fb-outcome { flex: 1; color: var(--text2); }
+.fb-lift { font-size: 13px; font-weight: 700; color: var(--apple-green); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { animation: fadeUp 0.5s ease forwards; }
+.fade-in-1 { animation: fadeUp 0.5s 0.1s ease both; }
+.fade-in-2 { animation: fadeUp 0.5s 0.2s ease both; }
+.fade-in-3 { animation: fadeUp 0.5s 0.3s ease both; }
+.fade-in-4 { animation: fadeUp 0.5s 0.4s ease both; }
+
+/* ─── LIVE PULSING RECORDING INDICATOR ─── */
+.rec-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--apple-red);
+  animation: rec-pulse 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes rec-pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,55,95,0.4)} 50%{opacity:0.7;box-shadow:0 0 0 6px rgba(255,55,95,0)} }
+
+/* ─── PATIENT AVATAR ─── */
+.patient-avatar {
+  width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #0071E3, #BF5AF2);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+
+/* ─── INTEGRATION CARD ─── */
+.int-card {
+  background: #fff; border-radius: var(--r-sm); border: 1px solid var(--border);
+  padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow-sm); margin-bottom: 10px;
+}
+.int-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.int-name { font-size: 13px; font-weight: 600; }
+.int-status { font-size: 11px; margin-top: 2px; }
+.int-connected { color: var(--apple-green); }
+.int-pending { color: var(--apple-orange); }
+.int-actions { margin-left: auto; display: flex; gap: 6px; }
+.btn-sm {
+  padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 500;
+  border: 1px solid var(--border); background: transparent; cursor: pointer;
+  font-family: inherit; color: var(--text2); transition: all 0.2s;
+}
+.btn-sm:hover { background: var(--bg2); }
+.btn-sm-blue {
+  padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 600;
+  border: none; background: var(--apple-blue); cursor: pointer;
+  font-family: inherit; color: #fff;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1000px) {
+  .screen-body { padding: 32px 24px 60px; }
+  .screen-banner { padding: 36px 24px 28px; }
+  .grid-2,.grid-3,.grid-4,.grid-sidebar,.grid-main-side { grid-template-columns: 1fr; }
+  nav { padding: 0 20px; }
+  .nav-tabs { gap: 2px; }
+  .nav-tab { padding: 5px 10px; font-size: 11px; }
+}
+
+/* ─── EXEC DARK SECTION ─── */
+.exec-dark {
+  background: #1C1C1E; border-radius: var(--r); padding: 24px; color: #fff;
+}
+.exec-dark .card-title { color: rgba(255,255,255,0.5); }
+.exec-dark .kpi-label { color: rgba(255,255,255,0.5); }
+.exec-dark .kpi-value { color: #fff; }
+.exec-dark .kpi-sub { color: rgba(255,255,255,0.4); }
+
+/* ─── MAP-LIKE HEATMAP ─── */
+.risk-heatmap {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px;
+  padding: 16px 0;
+}
+.rh-cell {
+  aspect-ratio: 1; border-radius: 4px; cursor: pointer;
+  position: relative; transition: transform 0.2s;
+}
+.rh-cell:hover { transform: scale(1.1); z-index: 2; }
+
+/* TOOLTIP ON HOVER (CSS-only) */
+.rh-cell::after {
+  content: attr(data-tip);
+  position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.8); color: #fff; font-size: 10px; padding: 3px 8px;
+  border-radius: 6px; white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s;
+}
+.rh-cell:hover::after { opacity: 1; }
+
+/* ─── MOAT PILL ─── */
+.moat-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(0,113,227,0.06); border: 1px solid rgba(0,113,227,0.14);
+  font-size: 12px; font-weight: 500; color: var(--apple-blue);
+  margin: 3px;
+}
+
+/* ─── STICKY SIDEBAR ─── */
+.sticky-sidebar { position: sticky; top: 76px; }
+
+/* ─── ENCOUNTER STATUS BAR ─── */
+.encounter-bar {
+  background: rgba(0,113,227,0.04); border: 1px solid rgba(0,113,227,0.12);
+  border-radius: var(--r-sm); padding: 12px 20px;
+  display: flex; align-items: center; gap: 20px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.enc-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.enc-label { color: var(--text3); }
+.enc-value { color: var(--text); font-weight: 600; }
+.enc-divider { width: 1px; height: 20px; background: var(--border); }
+
+/* ─── TYPING CURSOR ─── */
+.cursor::after { content: '|'; animation: blink 1s step-end infinite; color: var(--apple-blue); }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ─── REVIEW SIGN-OFF BAR ─── */
+.signoff-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 12px 64px;
+  display: flex; align-items: center; gap: 16px;
+}
+.signoff-bar .screen-2-bar { display: none; }
+#screen-2.active ~ .signoff-bar .screen-2-bar { display: flex; }
+
+/* ─── COMPLEXITY INDICATOR DOTS ─── */
+.complexity-dots { display: flex; gap: 4px; }
+.cx-dot { width: 10px; height: 10px; border-radius: 50%; }
+.cx-filled { background: var(--apple-blue); }
+.cx-empty { background: #E5E5EA; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ GLOBAL NAV ═══════════════════════════ -->
+<nav>
+  <div class="nav-logo">Kortex<em>aa</em></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showScreen('s1',this)">① Encounter Start</button>
+    <button class="nav-tab" onclick="showScreen('s2',this)">② Ambient Listen</button>
+    <button class="nav-tab" onclick="showScreen('s3',this)">③ Relevance Gauge</button>
+    <button class="nav-tab" onclick="showScreen('s4',this)">④ Complexity Clues</button>
+    <button class="nav-tab" onclick="showScreen('s5',this)">⑤ Coding Panel</button>
+    <button class="nav-tab" onclick="showScreen('s6',this)">⑥ Audit Defense</button>
+    <button class="nav-tab" onclick="showScreen('s7',this)">⑦ Revenue Map</button>
+    <button class="nav-tab" onclick="showScreen('s8',this)">⑧ Benchmark</button>
+    <button class="nav-tab" onclick="showScreen('s9',this)">⑨ Compliance</button>
+    <button class="nav-tab" onclick="showScreen('s10',this)">⑩ Feedback Loop</button>
+    <button class="nav-tab" onclick="showScreen('s11',this)">⑪ Executive</button>
+    <button class="nav-tab" onclick="showScreen('s12',this)">⑫ Integration</button>
+  </div>
+  <div class="nav-right">
+    <div class="nav-badge">● HIPAA Compliant</div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ SCREEN 1: ENCOUNTER START ═══════════════════════════ -->
+<div class="screen active" id="s1">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 01 — Encounter Start Dashboard</div>
+    <h1>Patient context + revenue baseline<br>in one <em>decisive frame.</em></h1>
+    <p>Before the first word is spoken, Kortexaa already knows the financial stakes, payer profile, prior coding patterns, and peer benchmarks for this exact encounter type.</p>
+    <div class="banner-chips">
+      <span class="chip chip-blue">⚡ Revenue Risk Score</span>
+      <span class="chip chip-green">📊 Peer Comparator</span>
+      <span class="chip chip-orange">🏥 Payer Complexity</span>
+      <span class="chip chip-purple">🧠 HCC Gap Preview</span>
+    </div>
+  </div>
+  <div class="screen-body">
+
+    <!-- Encounter Status Bar -->
+    <div class="encounter-bar fade-in">
+      <div class="enc-item"><span class="enc-label">Patient</span><span class="enc-value">Margaret A., 68F</span></div>
+      <div class="enc-divider"></div>
+      <div class="enc-item"><span class="enc-label">Encounter</span><span class="enc-value">Office Visit — Established</span></div>
+      <div class="enc-divider"></div>
+      <div class="enc-item"><span class="enc-label">Payer</span><span class="enc-value">Medicare Advantage</span></div>
+      <div class="enc-divider"></div>
+      <div class="enc-item"><span class="enc-label">Provider</span><span class="enc-value">Dr. Sarah K., Internal Med</span></div>
+      <div class="enc-divider"></div>
+      <div class="enc-item"><span class="enc-label">Time</span><span class="enc-value">Tue 10:15 AM</span></div>
+      <div style="margin-left:auto;">
+        <button class="btn-sm-blue" onclick="showScreen('s2',document.querySelectorAll('.nav-tab')[1])">▶ Start Listening →</button>
+      </div>
+    </div>
+
+    <div class="grid-main-side fade-in-1">
+      <!-- LEFT MAIN -->
+      <div>
+        <!-- KPIs -->
+        <div class="grid-4" style="margin-bottom:24px">
+          <div class="kpi-card" style="--kpi-color:#0071E3">
+            <div class="kpi-label">Revenue Risk Score</div>
+            <div class="kpi-value"><em>74</em>/100</div>
+            <div class="kpi-sub"><span class="kpi-trend-up">↑ 12pts</span> vs last encounter</div>
+          </div>
+          <div class="kpi-card" style="--kpi-color:#FF9F0A">
+            <div class="kpi-label">Estimated Baseline</div>
+            <div class="kpi-value">$<em>312</em></div>
+            <div class="kpi-sub">Expected at current coding</div>
+          </div>
+          <div class="kpi-card" style="--kpi-color:#30D158">
+            <div class="kpi-label">Opportunity Ceiling</div>
+            <div class="kpi-value">$<em>687</em></div>
+            <div class="kpi-sub"><span class="kpi-trend-up">+$375 capturable</span></div>
+          </div>
+          <div class="kpi-card" style="--kpi-color:#BF5AF2">
+            <div class="kpi-label">HCC Gaps Detected</div>
+            <div class="kpi-value"><em>4</em> open</div>
+            <div class="kpi-sub">From prior encounter history</div>
+          </div>
+        </div>
+
+        <!-- Active Problem List -->
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">
+            Active Problem List — Revenue-Weighted
+            <div class="card-title-icon" style="background:rgba(0,113,227,0.08)">📋</div>
+          </div>
+          <div class="data-table" style="overflow:auto">
+            <table class="data-table" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Problem</th>
+                  <th>ICD-10</th>
+                  <th>Last Coded</th>
+                  <th>Status</th>
+                  <th>Revenue Weight</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600;color:var(--text)">Type 2 Diabetes w/ CKD Stage 3</td>
+                  <td class="mono">E11.22</td>
+                  <td>2 visits ago</td>
+                  <td><span class="badge badge-orange">⚠ Underspecified</span></td>
+                  <td style="font-weight:700;color:var(--apple-green)">High · +$148</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:var(--text)">CHF, Systolic, Chronic</td>
+                  <td class="mono">I50.20</td>
+                  <td>Last visit</td>
+                  <td><span class="badge badge-green">✓ Documented</span></td>
+                  <td style="color:var(--text2)">Moderate · $92</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:var(--text)">Hyperlipidemia</td>
+                  <td class="mono">E78.5</td>
+                  <td>3 visits ago</td>
+                  <td><span class="badge badge-red">✗ Missing This Visit</span></td>
+                  <td style="font-weight:700;color:var(--apple-red)">Missed · –$64</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:var(--text)">Obesity, BMI 38</td>
+                  <td class="mono">E66.01</td>
+                  <td>Never coded</td>
+                  <td><span class="badge badge-red">✗ Never Captured</span></td>
+                  <td style="font-weight:700;color:var(--apple-red)">Uncaptured · –$110</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;color:var(--text)">OSA, CPAP-dependent</td>
+                  <td class="mono">G47.33</td>
+                  <td>Never coded</td>
+                  <td><span class="badge badge-purple">★ HCC Eligible</span></td>
+                  <td style="font-weight:700;color:var(--apple-purple)">HCC Gap · +$203</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Peer Revenue Comparator -->
+        <div class="card">
+          <div class="card-title">
+            Peer Revenue Comparator — Same Encounter Type
+            <span class="badge badge-blue">Anonymous Network Data</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name" style="color:var(--apple-blue);font-weight:700">Dr. Sarah K. (You)</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:51%;background:var(--apple-blue)"></div></div>
+            <span class="bench-value" style="color:var(--apple-blue)">$312</span>
+            <span class="bench-label">Current</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Practice Average</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:62%;background:var(--text3)"></div></div>
+            <span class="bench-value">$381</span>
+            <span class="bench-label">Avg</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Specialty 75th Pctile</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:80%;background:var(--apple-orange)"></div></div>
+            <span class="bench-value">$492</span>
+            <span class="bench-label">75th</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Specialty 90th Pctile</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:100%;background:var(--apple-green)"></div></div>
+            <span class="bench-value">$687</span>
+            <span class="bench-label">Top 10%</span>
+          </div>
+          <div style="margin-top:16px;padding:12px;background:rgba(0,113,227,0.04);border-radius:10px;border:1px solid rgba(0,113,227,0.1)">
+            <span style="font-size:12px;color:var(--text2)">💡 <strong>Kortexaa Insight:</strong> If you capture all detected HCC gaps and code accurately today, this encounter moves to <strong style="color:var(--apple-green)">$687</strong> — top-decile for this encounter type.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="sticky-sidebar">
+        <!-- Complexity Gauge -->
+        <div class="card" style="margin-bottom:20px;text-align:center">
+          <div class="card-title" style="justify-content:center">Complexity Gauge</div>
+          <div style="position:relative;margin:12px auto;width:120px;height:120px">
+            <svg viewBox="0 0 120 120" style="width:100%;height:100%;transform:rotate(-90deg)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#E5E5EA" stroke-width="10"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="url(#complexGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="220 314" />
+              <defs>
+                <linearGradient id="complexGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#0071E3"/>
+                  <stop offset="100%" stop-color="#BF5AF2"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span style="font-size:28px;font-weight:800;letter-spacing:-1px">74</span>
+              <span style="font-size:10px;color:var(--text3)">MDM Level 4</span>
+            </div>
+          </div>
+          <div class="complexity-dots" style="justify-content:center;gap:6px;margin-top:4px">
+            <div class="cx-dot cx-filled"></div>
+            <div class="cx-dot cx-filled"></div>
+            <div class="cx-dot cx-filled"></div>
+            <div class="cx-dot cx-filled"></div>
+            <div class="cx-dot cx-empty"></div>
+          </div>
+          <div style="font-size:11px;color:var(--text3);margin-top:8px">High Complexity · Level 4</div>
+        </div>
+
+        <!-- Payer Rules Snapshot -->
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">Payer Rules — Medicare Advantage</div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(48,209,88,0.1)">✓</div>
+            <div><div style="font-size:12px;font-weight:600">HCC Capture Required</div><div style="font-size:11px;color:var(--text3)">Annual RAF documentation mandated</div></div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(255,159,10,0.1)">⚠</div>
+            <div><div style="font-size:12px;font-weight:600">Prior Auth: Cardiology Referral</div><div style="font-size:11px;color:var(--text3)">Required if ordering echo today</div></div>
+          </div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(255,55,95,0.1)">✗</div>
+            <div><div style="font-size:12px;font-weight:600">Bundling Risk: 99215 + G0439</div><div style="font-size:11px;color:var(--text3)">Cannot bill both — choose strongest</div></div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button onclick="showScreen('s2',document.querySelectorAll('.nav-tab')[1])" style="width:100%;padding:16px;border-radius:var(--r-sm);background:var(--apple-blue);color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-blue);font-family:inherit;letter-spacing:-0.3px">
+          ▶ Begin Encounter →
+        </button>
+        <div style="text-align:center;margin-top:8px;font-size:11px;color:var(--text3)">Ambient listening will start automatically</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 2: AMBIENT LISTENING ═══════════════════════════ -->
+<div class="screen" id="s2">
+  <div class="screen-banner" style="background:linear-gradient(135deg,#0a0a10 0%,#1a1a2e 60%,#0d1520 100%);color:#fff;border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div class="banner-eyebrow" style="color:rgba(255,255,255,0.5)">
+      <span class="rec-dot"></span>
+      Screen 02 — Ambient Listening Engine · <strong style="color:#fff">LIVE</strong>
+    </div>
+    <h1 style="color:#fff">Every word. <em>Every revenue signal.</em><br>Captured in real time.</h1>
+    <p style="color:rgba(255,255,255,0.55)">Multi-layer NLP extracts clinical facts, billing signals, procedure intent, and complexity drivers simultaneously — while staying invisible to the encounter.</p>
+    <div class="banner-chips">
+      <span class="chip" style="background:rgba(255,55,95,0.15);color:#ff6b8a;border-color:rgba(255,55,95,0.25)">⏺ Recording Active</span>
+      <span class="chip" style="background:rgba(48,209,88,0.12);color:#30D158;border-color:rgba(48,209,88,0.2)">⚡ 38ms Latency</span>
+      <span class="chip" style="background:rgba(191,90,242,0.12);color:#cf8fff;border-color:rgba(191,90,242,0.2)">🧠 Intent Extraction</span>
+    </div>
+  </div>
+  <div class="screen-body" style="background:#F5F5F7">
+    <div class="grid-main-side">
+      <!-- LEFT: TRANSCRIPT + WAVEFORM -->
+      <div>
+        <!-- Waveform -->
+        <div class="card" style="margin-bottom:20px;background:#1C1C1E;border-color:rgba(255,255,255,0.08)">
+          <div style="display:flex;align-items:center;gap:16px">
+            <div class="siri-orb siri-large">
+              <div class="siri-r"></div><div class="siri-r"></div>
+              <div class="siri-inner">🎤</div>
+            </div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <span class="rec-dot"></span>
+                <span style="color:rgba(255,255,255,0.9);font-size:13px;font-weight:600">Ambient Capture Active</span>
+                <span style="color:rgba(255,255,255,0.4);font-size:11px;margin-left:auto;font-family:'DM Mono',monospace">00:07:42</span>
+              </div>
+              <div class="waveform">
+                <div class="wave-bar" style="height:8px"></div>
+                <div class="wave-bar" style="height:20px"></div>
+                <div class="wave-bar" style="height:14px"></div>
+                <div class="wave-bar" style="height:28px"></div>
+                <div class="wave-bar" style="height:18px"></div>
+                <div class="wave-bar" style="height:24px"></div>
+                <div class="wave-bar" style="height:12px"></div>
+                <div class="wave-bar" style="height:28px"></div>
+                <div class="wave-bar" style="height:16px"></div>
+                <div class="wave-bar" style="height:22px"></div>
+                <div class="wave-bar" style="height:8px"></div>
+                <div class="wave-bar" style="height:18px"></div>
+                <div class="wave-bar" style="height:24px"></div>
+                <div class="wave-bar" style="height:28px"></div>
+                <div class="wave-bar" style="height:10px"></div>
+                <div class="wave-bar" style="height:20px"></div>
+                <div class="wave-bar" style="height:28px"></div>
+                <div class="wave-bar" style="height:14px"></div>
+                <div class="wave-bar" style="height:22px"></div>
+                <div class="wave-bar" style="height:8px"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <button style="padding:6px 14px;border-radius:100px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.15);font-size:11px;cursor:pointer;font-family:inherit">⏸ Pause</button>
+              <button style="padding:6px 14px;border-radius:100px;background:rgba(255,55,95,0.2);color:#ff6b8a;border:1px solid rgba(255,55,95,0.3);font-size:11px;cursor:pointer;font-family:inherit">✕ Stop</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Transcript -->
+        <div class="card">
+          <div class="card-title">Live Transcript <span style="font-size:10px;color:var(--apple-red);font-weight:500;text-transform:none">● Processing</span></div>
+
+          <div class="transcript-bubble bubble-clinician">
+            <div class="bubble-tag">Dr. Sarah K.</div>
+            So how have you been feeling since last month? Any changes in your energy or breathing?
+          </div>
+
+          <div class="transcript-bubble" style="background:#f0f5ff">
+            <div class="bubble-tag">Patient — Margaret A.</div>
+            I've been really fatigued. Especially climbing stairs. And my legs have been swelling more than usual the past two weeks.
+            <div>
+              <span class="bubble-flag">🔶 Symptom: Bilateral LE Edema → CHF Exacerbation Signal</span>
+              <span class="bubble-flag" style="margin-left:4px;background:rgba(0,113,227,0.08);color:#0058b0">📊 MDM Complexity Driver</span>
+            </div>
+          </div>
+
+          <div class="transcript-bubble bubble-clinician">
+            <div class="bubble-tag">Dr. Sarah K.</div>
+            Have you been checking your weight daily at home? And are you taking your furosemide every morning?
+          </div>
+
+          <div class="transcript-bubble" style="background:#f0f5ff">
+            <div class="bubble-tag">Patient — Margaret A.</div>
+            Honestly no, I forget sometimes. My blood sugar has also been running higher — around 200 most mornings. And I snore badly — my husband says I stop breathing sometimes.
+            <div>
+              <span class="bubble-flag">🔶 Uncontrolled DM → E11.65</span>
+              <span class="bubble-flag" style="margin-left:4px;background:rgba(191,90,242,0.1);color:#7b2fb5">★ OSA Suspect → G47.33 HCC</span>
+            </div>
+          </div>
+
+          <div class="transcript-bubble bubble-ai">
+            <div class="bubble-tag" style="color:rgba(0,88,176,0.6)">Kortexaa Intelligence</div>
+            Sleep apnea (OSA) mentioned for first time. Patient-reported apneic events = diagnostic qualifier. Recommend formal sleep study or CPAP compliance query. G47.33 is HCC-eligible — captures $203 RAF credit annually.
+          </div>
+
+          <div class="transcript-bubble bubble-clinician">
+            <div class="bubble-tag">Dr. Sarah K.</div>
+            That's concerning. Let's order a sleep study. Also, given your kidney function last time — has your urine output changed?
+          </div>
+
+          <div style="padding:10px 14px;border-radius:10px;border:1px dashed var(--apple-blue);background:rgba(0,113,227,0.03);display:flex;align-items:center;gap:8px">
+            <span style="font-size:14px;color:var(--apple-blue)">●</span>
+            <span style="font-size:13px;color:var(--text2)" class="cursor">Patient is responding...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: REAL-TIME SIGNAL PANEL -->
+      <div class="sticky-sidebar">
+        <!-- Intent Tags -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Live Intent Markers <span class="badge badge-blue">38 extracted</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span class="moat-pill">🏥 CHF Exacerbation</span>
+            <span class="moat-pill" style="color:#7b2fb5;background:rgba(191,90,242,0.06);border-color:rgba(191,90,242,0.14)">★ OSA-HCC</span>
+            <span class="moat-pill" style="color:#b06000;background:rgba(255,159,10,0.06);border-color:rgba(255,159,10,0.14)">⚠ Uncontrolled DM</span>
+            <span class="moat-pill">🧪 CKD Stage 3</span>
+            <span class="moat-pill" style="color:#1a8c3a;background:rgba(48,209,88,0.06);border-color:rgba(48,209,88,0.14)">✓ Furosemide Non-compliance</span>
+            <span class="moat-pill" style="color:#b06000;background:rgba(255,159,10,0.06);border-color:rgba(255,159,10,0.14)">⚠ LE Bilateral Edema</span>
+            <span class="moat-pill">📋 Sleep Study Order</span>
+            <span class="moat-pill">💊 Med Adherence Issue</span>
+          </div>
+        </div>
+
+        <!-- Revenue Signal Meter -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Revenue Signal Strength</div>
+          <div style="text-align:center;padding:12px 0">
+            <div style="font-size:42px;font-weight:800;letter-spacing:-2px;color:var(--apple-green)">91</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:2px">/ 100 signal strength</div>
+            <div style="margin-top:12px">
+              <div class="progress-wrap"><div class="progress-fill" style="width:91%;background:var(--apple-green)"></div></div>
+            </div>
+            <div style="font-size:12px;color:var(--text2);margin-top:10px">↑ 3 high-value codes pending capture</div>
+          </div>
+        </div>
+
+        <!-- Real-time Code Queue -->
+        <div class="card">
+          <div class="card-title">Code Queue — Forming <span class="badge badge-orange">5 pending</span></div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(191,90,242,0.1)">★</div>
+            <div style="flex:1">
+              <div class="mono" style="font-size:12px;font-weight:600">G47.33 — Sleep Apnea</div>
+              <div style="font-size:11px;color:var(--text3)">HCC Eligible · +$203 RAF</div>
+            </div>
+            <span class="badge badge-purple">NEW</span>
+          </div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(255,159,10,0.1)">⚠</div>
+            <div style="flex:1">
+              <div class="mono" style="font-size:12px;font-weight:600">E11.65 — DM Uncontrolled</div>
+              <div style="font-size:11px;color:var(--text3)">Severity upgrade from E11.9</div>
+            </div>
+            <span class="badge badge-orange">UPGRADE</span>
+          </div>
+          <div class="list-row">
+            <div class="list-row-icon" style="background:rgba(0,113,227,0.1)">+</div>
+            <div style="flex:1">
+              <div class="mono" style="font-size:12px;font-weight:600">99215 — Level 5 E/M</div>
+              <div style="font-size:11px;color:var(--text3)">MDM complexity threshold met</div>
+            </div>
+            <span class="badge badge-blue">SUGGEST</span>
+          </div>
+          <div style="margin-top:14px">
+            <button onclick="showScreen('s5',document.querySelectorAll('.nav-tab')[4])" style="width:100%;padding:11px;border-radius:100px;background:var(--apple-blue);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">View Full Coding Panel →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 3: RELEVANCE GAUGE ═══════════════════════════ -->
+<div class="screen" id="s3">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 03 — Relevance Gauge Overlay</div>
+    <h1>Real-time signal heat.<br><em>Noise filtered out.</em></h1>
+    <p>A multi-dimensional scoring engine prioritizes only what matters for revenue and compliance — not a generic transcript highlight. Every color band earns its place.</p>
+    <div class="banner-chips">
+      <span class="chip chip-red">🔴 Critical Revenue Signals</span>
+      <span class="chip chip-orange">🟡 Moderate Priority</span>
+      <span class="chip chip-green">🟢 Captured / Clear</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-sidebar">
+      <!-- GAUGE PANEL -->
+      <div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">Revenue Relevance Score</div>
+          <div style="padding:16px 0">
+            <div style="margin-bottom:20px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:12px;font-weight:600">Clinical Specificity</span>
+                <span style="font-size:14px;font-weight:700;color:var(--apple-green)">88%</span>
+              </div>
+              <div class="progress-wrap"><div class="progress-fill" style="width:88%;background:var(--apple-green)"></div></div>
+            </div>
+            <div style="margin-bottom:20px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:12px;font-weight:600">Billing Completeness</span>
+                <span style="font-size:14px;font-weight:700;color:var(--apple-orange)">62%</span>
+              </div>
+              <div class="progress-wrap"><div class="progress-fill" style="width:62%;background:var(--apple-orange)"></div></div>
+            </div>
+            <div style="margin-bottom:20px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:12px;font-weight:600">Compliance Risk</span>
+                <span style="font-size:14px;font-weight:700;color:var(--apple-red)">34%</span>
+              </div>
+              <div class="progress-wrap"><div class="progress-fill" style="width:34%;background:var(--apple-red)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-size:12px;font-weight:600">HCC Coverage</span>
+                <span style="font-size:14px;font-weight:700;color:var(--apple-blue)">71%</span>
+              </div>
+              <div class="progress-wrap"><div class="progress-fill" style="width:71%;background:var(--apple-blue)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Dimension Legend</div>
+          <div class="list-row">
+            <div style="width:14px;height:14px;border-radius:3px;background:var(--apple-red);flex-shrink:0"></div>
+            <div><div style="font-size:12px;font-weight:600">Critical</div><div style="font-size:11px;color:var(--text3)">Compliance risk or significant revenue gap</div></div>
+          </div>
+          <div class="list-row">
+            <div style="width:14px;height:14px;border-radius:3px;background:var(--apple-orange);flex-shrink:0"></div>
+            <div><div style="font-size:12px;font-weight:600">Moderate</div><div style="font-size:11px;color:var(--text3)">Needs attention before sign-off</div></div>
+          </div>
+          <div class="list-row">
+            <div style="width:14px;height:14px;border-radius:3px;background:var(--apple-green);flex-shrink:0"></div>
+            <div><div style="font-size:12px;font-weight:600">Captured</div><div style="font-size:11px;color:var(--text3)">Revenue and documentation confirmed</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEAT MAP + TRANSCRIPT OVERLAY -->
+      <div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">Encounter Heat Map — Relevance by Moment</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:12px">Each cell = 30 seconds of encounter time. Darker = higher revenue relevance detected.</div>
+          <div class="risk-heatmap">
+            <div class="rh-cell h1" data-tip="0:00 — Patient greeting"></div>
+            <div class="rh-cell h1" data-tip="0:30 — Chief complaint intro"></div>
+            <div class="rh-cell h2" data-tip="1:00 — Fatigue discussed"></div>
+            <div class="rh-cell h3" data-tip="1:30 — Dyspnea on exertion"></div>
+            <div class="rh-cell h4" data-tip="2:00 — LE edema bilateral → CHF signal"></div>
+            <div class="rh-cell h5" data-tip="2:30 — CHF exacerbation confirmed ●HIGH"></div>
+            <div class="rh-cell h4" data-tip="3:00 — Medication adherence gap"></div>
+            <div class="rh-cell h3" data-tip="3:30 — Furosemide non-compliance"></div>
+            <div class="rh-cell h2" data-tip="4:00 — Weight monitoring discussion"></div>
+            <div class="rh-cell h5" data-tip="4:30 — Blood glucose 200 AM → DM uncontrolled ●HIGH"></div>
+            <div class="rh-cell h5" data-tip="5:00 — Sleep apnea suspect → HCC opportunity ●HIGH"></div>
+            <div class="rh-cell h4" data-tip="5:30 — Sleep study order placed"></div>
+            <div class="rh-cell h3" data-tip="6:00 — CKD query"></div>
+            <div class="rh-cell h4" data-tip="6:30 — Urine output change discussed"></div>
+            <div class="rh-cell h2" data-tip="7:00 — Social history"></div>
+            <div class="rh-cell h1" data-tip="7:30 — Follow-up plan"></div>
+            <div class="rh-cell h0" data-tip="8:00 — Closing"></div>
+            <div class="rh-cell h0" data-tip="8:30 — Wrapping up"></div>
+            <div class="rh-cell h0" data-tip="9:00 —"></div>
+            <div class="rh-cell h0" data-tip="9:30 —"></div>
+            <div class="rh-cell h0" data-tip="10:00 —"></div>
+          </div>
+          <div style="font-size:11px;color:var(--text3);margin-top:10px">💡 Hover cells to see moment detail. 6 high-intensity moments detected.</div>
+        </div>
+
+        <!-- Flagged Segments -->
+        <div class="card">
+          <div class="card-title">Flagged High-Revenue Moments</div>
+
+          <div class="alert-card high">
+            <div class="alert-icon">🔴</div>
+            <div style="flex:1">
+              <div class="alert-title">OSA Suspected — HCC-Eligible Signal (2:30 → 5:00)</div>
+              <div class="alert-body">Patient described apneic episodes confirmed by spouse. First time reported this encounter. G47.33 is eligible for HCC Risk Adjustment → +$203 RAF value annually.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Capture Now</button>
+                <button class="btn-dismiss">Dismiss</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card medium">
+            <div class="alert-icon">🟡</div>
+            <div style="flex:1">
+              <div class="alert-title">DM Uncontrolled — Severity Upgrade Opportunity (4:30)</div>
+              <div class="alert-body">Morning glucose consistently 200+. E11.9 (unspecified) currently coded. Upgrade to E11.65 (DM w/ hyperglycemia) is clinically supported and adds specificity.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Upgrade Code</button>
+                <button class="btn-dismiss">Keep E11.9</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card low">
+            <div class="alert-icon">🟢</div>
+            <div style="flex:1">
+              <div class="alert-title">CHF Level 5 E/M Complexity — Confirmed (2:00)</div>
+              <div class="alert-body">MDM complexity threshold met: multiple chronic conditions, new problem requiring workup (sleep apnea), medication management decision. 99215 fully defensible.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 4: COMPLEXITY CLUES ═══════════════════════════ -->
+<div class="screen" id="s4">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 04 — Complexity Clue Indicator</div>
+    <h1>Hidden billable complexity.<br><em>Now visible.</em></h1>
+    <p>Most tools transcribe. Kortexaa reasons. It surfaces the layered clinical logic that justifies higher-complexity billing — logic that only exists at the intersection of clinical knowledge and coding rules.</p>
+    <div class="banner-chips">
+      <span class="chip chip-purple">★ HCC Markers</span>
+      <span class="chip chip-blue">📊 MDM Complexity Drivers</span>
+      <span class="chip chip-orange">⚠ Comorbidity Chains</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card">
+        <div class="card-title">MDM Complexity Drivers — Detected</div>
+        <div class="list-row">
+          <div class="list-row-icon" style="background:rgba(191,90,242,0.1)">🧠</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600">Multiple Chronic Conditions</div>
+            <div style="font-size:12px;color:var(--text3)">CHF + T2DM + CKD = 3-system complexity → Level 4+ MDM</div>
+          </div>
+          <span class="badge badge-purple">HIGH</span>
+        </div>
+        <div class="list-row">
+          <div class="list-row-icon" style="background:rgba(255,159,10,0.1)">🔬</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600">New Problem Requiring Workup</div>
+            <div style="font-size:12px;color:var(--text3)">Sleep apnea newly suspected → sleep study ordered</div>
+          </div>
+          <span class="badge badge-orange">DRIVER</span>
+        </div>
+        <div class="list-row">
+          <div class="list-row-icon" style="background:rgba(255,55,95,0.1)">⚠</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600">Medication Management Decision</div>
+            <div style="font-size:12px;color:var(--text3)">Furosemide compliance gap → dose adjustment discussion</div>
+          </div>
+          <span class="badge badge-red">REQUIRED</span>
+        </div>
+        <div class="list-row">
+          <div class="list-row-icon" style="background:rgba(0,113,227,0.1)">📋</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600">Uncontrolled Comorbidity</div>
+            <div style="font-size:12px;color:var(--text3)">DM with morning BG 200+ → management change required</div>
+          </div>
+          <span class="badge badge-blue">CONFIRM</span>
+        </div>
+        <div style="margin-top:16px;padding:14px;background:rgba(0,113,227,0.04);border-radius:10px;border:1px solid rgba(0,113,227,0.1)">
+          <div style="font-size:11px;font-weight:600;color:var(--apple-blue);margin-bottom:4px">MDM VERDICT</div>
+          <div style="font-size:13px;color:var(--text)">High Complexity (Level 4 / 99215) — <strong style="color:var(--apple-green)">Fully justified</strong>. 4 independent drivers documented.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Comorbidity Chain Analyzer</div>
+        <!-- Chain visualization -->
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="background:rgba(0,113,227,0.07);border-radius:10px;padding:12px;position:relative">
+            <div style="font-size:12px;font-weight:600">Type 2 Diabetes (E11.22)</div>
+            <div style="font-size:11px;color:var(--text3)">Primary anchor condition</div>
+          </div>
+          <div style="display:flex;justify-content:center;height:20px;align-items:center">
+            <div style="width:2px;height:100%;background:rgba(0,113,227,0.2)"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="background:rgba(255,159,10,0.07);border-radius:10px;padding:10px;border-left:3px solid var(--apple-orange)">
+              <div style="font-size:11px;font-weight:600">CKD Stage 3 (N18.3)</div>
+              <div style="font-size:10px;color:var(--text3)">Diabetic nephropathy link</div>
+              <span class="badge badge-orange" style="margin-top:4px">Combination Code Avail.</span>
+            </div>
+            <div style="background:rgba(191,90,242,0.07);border-radius:10px;padding:10px;border-left:3px solid var(--apple-purple)">
+              <div style="font-size:11px;font-weight:600">OSA Suspect (G47.33)</div>
+              <div style="font-size:10px;color:var(--text3)">Obesity-DM-OSA triad</div>
+              <span class="badge badge-purple" style="margin-top:4px">HCC Eligible</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:center;height:20px;align-items:center">
+            <div style="width:2px;height:100%;background:rgba(255,55,95,0.2)"></div>
+          </div>
+          <div style="background:rgba(255,55,95,0.06);border-radius:10px;padding:12px;border:1px solid rgba(255,55,95,0.15)">
+            <div style="font-size:12px;font-weight:600;color:var(--apple-red)">⚠ Cascade Risk: CHF Exacerbation</div>
+            <div style="font-size:11px;color:var(--text3)">Diabetic cardiomyopathy + volume overload → bilateral LE edema</div>
+            <span class="badge badge-red" style="margin-top:4px">Document Causal Link</span>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--text3)">💡 Documenting causal chain between T2DM → CKD → CHF unlocks combination codes and higher reimbursement specificity.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Complexity Evidence Library — This Encounter</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Signal Detected</th>
+            <th>Source Quote</th>
+            <th>Coding Implication</th>
+            <th>Revenue Impact</th>
+            <th>Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600">Bilateral LE Edema</td>
+            <td style="font-style:italic;color:var(--text3)">"legs have been swelling more than usual"</td>
+            <td class="mono">I50.20 severity marker</td>
+            <td style="color:var(--apple-green);font-weight:600">+$92</td>
+            <td><span class="badge badge-green">97%</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Apneic Episodes</td>
+            <td style="font-style:italic;color:var(--text3)">"husband says I stop breathing sometimes"</td>
+            <td class="mono">G47.33 diagnosis support</td>
+            <td style="color:var(--apple-purple);font-weight:600">+$203 RAF</td>
+            <td><span class="badge badge-blue">89%</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Uncontrolled Glucose</td>
+            <td style="font-style:italic;color:var(--text3)">"around 200 most mornings"</td>
+            <td class="mono">E11.65 upgrade from E11.9</td>
+            <td style="color:var(--apple-orange);font-weight:600">+$44</td>
+            <td><span class="badge badge-green">94%</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600">Medication Non-adherence</td>
+            <td style="font-style:italic;color:var(--text3)">"I forget sometimes"</td>
+            <td class="mono">MDM decision complexity driver</td>
+            <td style="color:var(--apple-blue);font-weight:600">Level 4 qualifier</td>
+            <td><span class="badge badge-green">91%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 5: CODING PANEL ═══════════════════════════ -->
+<div class="screen" id="s5">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 05 — Real-Time Coding Suggestion Panel</div>
+    <h1>The right code. The right evidence.<br><em>The revenue delta justified.</em></h1>
+    <p>Not just code suggestions — each recommendation shows the compliance delta and revenue delta side by side. Accept, edit, or reject with a single action.</p>
+    <div class="banner-chips">
+      <span class="chip chip-green">💰 Revenue Delta</span>
+      <span class="chip chip-blue">📋 Evidence Snippets</span>
+      <span class="chip chip-red">🛡 Compliance Score</span>
+      <span class="chip chip-purple">★ HCC Flags</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-main-side">
+      <div>
+        <!-- Summary bar -->
+        <div style="background:linear-gradient(135deg,#0058b0,#0071E3);border-radius:var(--r);padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+          <div style="color:#fff">
+            <div style="font-size:11px;opacity:0.7;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Estimated Reimbursement</div>
+            <div style="font-size:36px;font-weight:800;letter-spacing:-1.5px">$687</div>
+          </div>
+          <div style="width:1px;height:50px;background:rgba(255,255,255,0.2)"></div>
+          <div style="color:#fff">
+            <div style="font-size:11px;opacity:0.7;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">vs. Baseline</div>
+            <div style="font-size:24px;font-weight:700;color:#30D158">+$375</div>
+          </div>
+          <div style="width:1px;height:50px;background:rgba(255,255,255,0.2)"></div>
+          <div style="color:#fff">
+            <div style="font-size:11px;opacity:0.7;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Compliance Score</div>
+            <div style="font-size:24px;font-weight:700;color:#30D158">96/100</div>
+          </div>
+          <div style="margin-left:auto">
+            <button onclick="showScreen('s6',document.querySelectorAll('.nav-tab')[5])" style="padding:12px 24px;border-radius:100px;background:#fff;color:var(--apple-blue);border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">Generate Audit Pack →</button>
+          </div>
+        </div>
+
+        <!-- Suggested Codes -->
+        <div class="card-title" style="margin-bottom:12px">Suggested Codes <span class="badge badge-green">6 total · 4 accepted · 1 pending</span></div>
+
+        <div class="code-pill" style="--pill-color:#30D158">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">99215</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">Office Visit — Level 5 E/M</span>
+            </div>
+            <div class="code-actions">
+              <span class="badge badge-green">✓ Accepted</span>
+            </div>
+          </div>
+          <div class="code-pill-desc">High complexity MDM — 3 chronic conditions, new problem requiring workup, medication management. Evidence: 4 documented drivers.</div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:97%"></div></div>
+            <span class="conf-pct">97%</span>
+            <span class="delta delta-pos">+$148 vs 99214</span>
+          </div>
+        </div>
+
+        <div class="code-pill" style="--pill-color:#BF5AF2">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">G47.33</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">Obstructive Sleep Apnea — <span style="color:var(--apple-purple);font-weight:600">HCC Eligible</span></span>
+            </div>
+            <div class="code-actions">
+              <button class="btn-accept">Accept</button>
+              <button class="btn-reject">Reject</button>
+              <button class="btn-edit">Edit</button>
+            </div>
+          </div>
+          <div class="code-pill-desc">Patient reported apneic episodes corroborated by spouse. New diagnosis this visit. Evidence: "husband says I stop breathing sometimes." Sleep study ordered to confirm.</div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:89%"></div></div>
+            <span class="conf-pct">89%</span>
+            <span class="delta delta-pos">+$203 RAF Annual</span>
+          </div>
+        </div>
+
+        <div class="code-pill" style="--pill-color:#FF9F0A">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">E11.65</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">T2DM w/ Hyperglycemia <span style="color:var(--apple-orange)">(upgrade from E11.9)</span></span>
+            </div>
+            <div class="code-actions">
+              <span class="badge badge-green">✓ Accepted</span>
+            </div>
+          </div>
+          <div class="code-pill-desc">Morning BG consistently 200mg/dL. Upgrade from unspecified adds clinical specificity and supports HCC RAF calculation. Evidence: patient-reported glucose levels.</div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:94%"></div></div>
+            <span class="conf-pct">94%</span>
+            <span class="delta delta-pos">+$44 specificity</span>
+          </div>
+        </div>
+
+        <div class="code-pill" style="--pill-color:#0071E3">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">I50.22</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">CHF, Systolic, Acute-on-Chronic</span>
+            </div>
+            <div class="code-actions">
+              <span class="badge badge-green">✓ Accepted</span>
+            </div>
+          </div>
+          <div class="code-pill-desc">Bilateral edema + dyspnea on exertion + CHF history = acute-on-chronic pattern. Upgrade from I50.20 (chronic only) is clinically appropriate.</div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:88%"></div></div>
+            <span class="conf-pct">88%</span>
+            <span class="delta delta-pos">+$67 acuity</span>
+          </div>
+        </div>
+
+        <div class="code-pill" style="--pill-color:#30D158">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">N18.3</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">CKD Stage 3a</span>
+            </div>
+            <div class="code-actions">
+              <span class="badge badge-green">✓ Accepted</span>
+            </div>
+          </div>
+          <div class="code-pill-desc">Consistent with prior eGFR results. Supporting combination code with E11.22 documents diabetic nephropathy specificity.</div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:99%"></div></div>
+            <span class="conf-pct">99%</span>
+            <span class="delta delta-pos">+$38 combo</span>
+          </div>
+        </div>
+
+        <div class="code-pill" style="--pill-color:#FF375F;opacity:0.7">
+          <div class="code-pill-header">
+            <div>
+              <span class="code-pill-code">E66.01</span>
+              <span style="font-size:11px;color:var(--text3);margin-left:8px">Morbid Obesity, BMI 38 — <span style="color:var(--apple-red)">Dismissed</span></span>
+            </div>
+            <div class="code-actions">
+              <span class="badge badge-gray">✗ Rejected</span>
+              <button class="btn-edit">Undo</button>
+            </div>
+          </div>
+          <div class="code-pill-desc">Provider chose not to document obesity this visit. Flagged for next encounter. <span style="color:var(--apple-orange)">⚠ Reminder set: Code next visit.</span></div>
+          <div class="code-pill-footer">
+            <div class="conf-bar-wrap"><div class="conf-bar-fill" style="width:72%;background:var(--text3)"></div></div>
+            <span class="conf-pct">72%</span>
+            <span class="delta" style="color:var(--apple-red)">–$110 deferred</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sticky-sidebar">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Revenue Breakdown</div>
+          <div class="list-row">
+            <span style="font-size:12px;color:var(--text2);flex:1">Base E/M (99215)</span>
+            <span style="font-size:13px;font-weight:700">$248</span>
+          </div>
+          <div class="list-row">
+            <span style="font-size:12px;color:var(--text2);flex:1">CHF Acuity Upgrade</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-green)">+$67</span>
+          </div>
+          <div class="list-row">
+            <span style="font-size:12px;color:var(--text2);flex:1">DM Specificity Upgrade</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-green)">+$44</span>
+          </div>
+          <div class="list-row">
+            <span style="font-size:12px;color:var(--text2);flex:1">CKD Combination</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-green)">+$38</span>
+          </div>
+          <div class="list-row">
+            <span style="font-size:12px;color:var(--text2);flex:1">OSA HCC (pending)</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-purple)">+$203 RAF</span>
+          </div>
+          <div class="divider"></div>
+          <div class="list-row">
+            <span style="font-size:13px;font-weight:700;flex:1">Total This Visit</span>
+            <span style="font-size:16px;font-weight:800;color:var(--apple-blue)">$687</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Bundling / Conflict Check</div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">99215 + G0439 — Bundling risk avoided (not billed together)</div>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">E11.22 + N18.3 → E11.22 as primary — sequencing correct</div>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-med"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">G47.33 requires polysomnography for final confirmation</div>
+          </div>
+        </div>
+
+        <button onclick="showScreen('s6',document.querySelectorAll('.nav-tab')[5])" style="width:100%;padding:14px;border-radius:var(--r-sm);background:var(--apple-blue);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:-0.3px;box-shadow:var(--shadow-blue)">
+          🛡 Generate Audit Pack →
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 6: AUDIT DEFENSE ═══════════════════════════ -->
+<div class="screen" id="s6">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 06 — Audit Defense Pack Generator</div>
+    <h1>One click to audit-ready.<br><em>No surprises. No exposure.</em></h1>
+    <p>Every code, every revenue decision, every clinical signal — packaged into a chronological, source-linked audit dossier the moment you need it. This doesn't exist anywhere else.</p>
+    <div class="banner-chips">
+      <span class="chip chip-blue">📁 One-Click Dossier</span>
+      <span class="chip chip-green">🔗 Source-Linked Evidence</span>
+      <span class="chip chip-orange">📅 Chronological Trail</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-main-side">
+      <div>
+        <!-- Audit Pack Header -->
+        <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div>
+              <div style="font-size:18px;font-weight:700;letter-spacing:-0.5px">Audit Defense Pack</div>
+              <div style="font-size:12px;color:var(--text3);margin-top:2px">Generated: Tue Mar 5, 2026 · 11:04 AM · Encounter #KTX-20260305-MGA</div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <button class="btn-sm">📄 Export PDF</button>
+              <button class="btn-sm">📬 Share Securely</button>
+              <button class="btn-sm-blue">✓ Submit to Billing</button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <div style="text-align:center;padding:12px;background:rgba(48,209,88,0.06);border-radius:10px;border:1px solid rgba(48,209,88,0.12)">
+              <div style="font-size:22px;font-weight:800;color:var(--apple-green)">96</div>
+              <div style="font-size:11px;color:var(--text3)">Audit Risk Score</div>
+            </div>
+            <div style="text-align:center;padding:12px;background:rgba(0,113,227,0.06);border-radius:10px;border:1px solid rgba(0,113,227,0.12)">
+              <div style="font-size:22px;font-weight:800;color:var(--apple-blue)">6</div>
+              <div style="font-size:11px;color:var(--text3)">Codes Documented</div>
+            </div>
+            <div style="text-align:center;padding:12px;background:rgba(191,90,242,0.06);border-radius:10px;border:1px solid rgba(191,90,242,0.12)">
+              <div style="font-size:22px;font-weight:800;color:var(--apple-purple)">18</div>
+              <div style="font-size:11px;color:var(--text3)">Evidence Sources</div>
+            </div>
+            <div style="text-align:center;padding:12px;background:rgba(255,159,10,0.06);border-radius:10px;border:1px solid rgba(255,159,10,0.12)">
+              <div style="font-size:22px;font-weight:800;color:var(--apple-orange)">$687</div>
+              <div style="font-size:11px;color:var(--text3)">Billed Amount</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evidence Chain -->
+        <div class="card">
+          <div class="card-title">Chronological Evidence Chain</div>
+          <div style="position:relative">
+            <!-- Timeline line -->
+            <div style="position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--apple-blue),var(--apple-purple));opacity:0.2"></div>
+
+            <div style="display:flex;gap:16px;padding:12px 0;padding-left:8px">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--apple-blue);flex-shrink:0;margin-top:2px;z-index:1;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">1</div>
+              <div style="flex:1;background:rgba(0,113,227,0.04);border-radius:10px;padding:12px;border:1px solid rgba(0,113,227,0.1)">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                  <span class="mono" style="font-size:12px;font-weight:700">99215</span>
+                  <span style="font-size:11px;color:var(--text3)">·</span>
+                  <span style="font-size:11px;color:var(--text3);font-family:'DM Mono',monospace">10:15 AM — Encounter Start</span>
+                  <span class="badge badge-green" style="margin-left:auto">Accepted</span>
+                </div>
+                <div style="font-size:12px;color:var(--text2)"><strong>Medical Decision Making: High Complexity.</strong> Documented drivers: (1) CHF + T2DM + CKD as multiple established problems with management changes; (2) New problem requiring workup — OSA suspected, sleep study ordered [Transcript 5:04]; (3) Medication management decision — furosemide adherence gap addressed [Transcript 3:42].</div>
+                <div style="margin-top:8px;font-size:11px;color:var(--text3)">Sources: Ambient transcript (00:07:42), Active problem list, ICD-10-CM guidelines §MDM.3.b</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:12px 0;padding-left:8px">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--apple-purple);flex-shrink:0;margin-top:2px;z-index:1;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">2</div>
+              <div style="flex:1;background:rgba(191,90,242,0.04);border-radius:10px;padding:12px;border:1px solid rgba(191,90,242,0.1)">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                  <span class="mono" style="font-size:12px;font-weight:700">G47.33</span>
+                  <span style="font-size:11px;color:var(--text3)">·</span>
+                  <span style="font-size:11px;color:var(--text3);font-family:'DM Mono',monospace">10:22 AM — Patient History</span>
+                  <span class="badge badge-purple" style="margin-left:auto">HCC · Pending</span>
+                </div>
+                <div style="font-size:12px;color:var(--text2)"><strong>OSA Newly Suspected.</strong> Patient-reported apneic episodes ("husband says I stop breathing sometimes" [Transcript 5:03]) + obesity (BMI 38) + T2DM = high pretest probability. Sleep study ordered to confirm. Note: G47.33 can be coded with sleep study ordered per ICD-10-CM §G47 guidelines for suspected OSA with polysomnography pending.</div>
+                <div style="margin-top:8px;font-size:11px;color:var(--text3)">Sources: Ambient transcript (5:02–5:11), CMS HCC Model v28, ICD-10-CM §G47.33</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:12px 0;padding-left:8px">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--apple-orange);flex-shrink:0;margin-top:2px;z-index:1;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700">3</div>
+              <div style="flex:1;background:rgba(255,159,10,0.04);border-radius:10px;padding:12px;border:1px solid rgba(255,159,10,0.1)">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                  <span class="mono" style="font-size:12px;font-weight:700">E11.65</span>
+                  <span style="font-size:11px;color:var(--text3)">·</span>
+                  <span style="font-size:11px;color:var(--text3);font-family:'DM Mono',monospace">10:19 AM — Patient History</span>
+                  <span class="badge badge-orange" style="margin-left:auto">Upgrade</span>
+                </div>
+                <div style="font-size:12px;color:var(--text2)"><strong>DM Hyperglycemia Severity Specified.</strong> Patient self-reported morning BG consistently ~200 mg/dL [Transcript 4:31]. Upgrade from E11.9 (unspecified) to E11.65 (with hyperglycemia) is clinically accurate and auditable. BG documented in patient-reported history.</div>
+                <div style="margin-top:8px;font-size:11px;color:var(--text3)">Sources: Ambient transcript (4:28–4:45), ICD-10-CM §E11.65 tabular instruction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="sticky-sidebar">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Clinician Annotations</div>
+          <textarea style="width:100%;height:100px;border:1px solid var(--border);border-radius:10px;padding:10px;font-size:12px;font-family:inherit;resize:none;outline:none;color:var(--text);background:var(--bg2)" placeholder="Add clinical notes to this audit pack..."></textarea>
+          <button class="btn-sm" style="margin-top:8px">+ Add Annotation</button>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Audit Risk Assessment</div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">99215 — MDM well-documented</div>
+            <span class="badge badge-green">Low</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-med"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">G47.33 — Pending polysomnography</div>
+            <span class="badge badge-orange">Med</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">E11.65 — Supported by patient report</div>
+            <span class="badge badge-green">Low</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">I50.22 — Clinically defensible</div>
+            <span class="badge badge-green">Low</span>
+          </div>
+          <div style="margin-top:12px;padding:12px;background:rgba(48,209,88,0.05);border-radius:10px;border:1px solid rgba(48,209,88,0.12);text-align:center">
+            <div style="font-size:20px;font-weight:800;color:var(--apple-green)">96/100</div>
+            <div style="font-size:11px;color:var(--text3)">Overall Audit Defense Score</div>
+          </div>
+        </div>
+
+        <button style="width:100%;padding:14px;border-radius:var(--r-sm);background:var(--apple-blue);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:-0.3px;box-shadow:var(--shadow-blue)">
+          ✓ Finalize & Submit to Billing
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 7: REVENUE OPPORTUNITY MAP ═══════════════════════════ -->
+<div class="screen" id="s7">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 07 — Revenue Opportunity Map</div>
+    <h1>What you missed.<br><em>What it cost. What to do next.</em></h1>
+    <p>Post-visit intelligence that closes the loop. See exactly where revenue was left on the table — by encounter, by condition, by peer gap — with actionable next steps for the next visit.</p>
+    <div class="banner-chips">
+      <span class="chip chip-red">💸 Missed Code $$$</span>
+      <span class="chip chip-orange">📊 Peer Gap Analysis</span>
+      <span class="chip chip-blue">📅 Next Visit Flags</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="kpi-card" style="--kpi-color:#FF375F">
+        <div class="kpi-label">Missed This Visit</div>
+        <div class="kpi-value">$<em style="color:var(--apple-red)">110</em></div>
+        <div class="kpi-sub">Obesity coding deferred</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF9F0A">
+        <div class="kpi-label">Cumulative Last 90d</div>
+        <div class="kpi-value">$<em style="color:var(--apple-orange)">2,840</em></div>
+        <div class="kpi-sub">This provider, all patients</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#BF5AF2">
+        <div class="kpi-label">HCC Gaps Open</div>
+        <div class="kpi-value"><em style="color:var(--apple-purple)">7</em> codes</div>
+        <div class="kpi-sub">Across active patient panel</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#0071E3">
+        <div class="kpi-label">Peer Revenue Gap</div>
+        <div class="kpi-value">$<em>169</em>/visit</div>
+        <div class="kpi-sub">Below specialty 75th pctile</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Missed Codes This Visit -->
+      <div class="card">
+        <div class="card-title">Missed Codes — This Encounter</div>
+        <div class="missed-row">
+          <span class="missed-code">E66.01</span>
+          <div class="missed-desc">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Morbid Obesity, BMI 38</div>
+            <div style="font-size:11px;color:var(--text3)">Provider-deferred. Reminder set for next visit.</div>
+          </div>
+          <div style="text-align:right">
+            <div class="missed-amount">–$110</div>
+            <div class="missed-how">Deferred</div>
+          </div>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid var(--border)">
+          <div style="font-size:12px;color:var(--text3);font-style:italic">No other missed codes this visit — strong capture rate (94.8%)</div>
+        </div>
+
+        <div class="card-title" style="margin-top:16px">Missed Codes — Last 3 Encounters</div>
+        <div class="missed-row">
+          <span class="missed-code">E66.01</span>
+          <div class="missed-desc">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Obesity — Never Captured (3 visits)</div>
+          </div>
+          <div style="text-align:right">
+            <div class="missed-amount">–$330</div>
+            <div class="missed-how">Pattern</div>
+          </div>
+        </div>
+        <div class="missed-row">
+          <span class="missed-code">F41.1</span>
+          <div class="missed-desc">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Anxiety Disorder — Documented but Not Coded</div>
+          </div>
+          <div style="text-align:right">
+            <div class="missed-amount">–$76</div>
+            <div class="missed-how">Oversight</div>
+          </div>
+        </div>
+        <div class="missed-row">
+          <span class="missed-code">Z87.891</span>
+          <div class="missed-desc">
+            <div style="font-size:13px;font-weight:600;color:var(--text)">Tobacco Use History — RAF-Eligible</div>
+          </div>
+          <div style="text-align:right">
+            <div class="missed-amount">–$54</div>
+            <div class="missed-how">History</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peer Gap Map -->
+      <div class="card">
+        <div class="card-title">Revenue Gap vs. Peer Network</div>
+        <div style="margin-bottom:20px">
+          <div class="bench-row">
+            <span class="bench-name" style="color:var(--apple-blue);font-weight:700">Dr. Sarah K. (90d avg)</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:50%;background:var(--apple-blue)"></div></div>
+            <span class="bench-value" style="color:var(--apple-blue)">$318</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Practice Avg</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:60%;background:var(--text3)"></div></div>
+            <span class="bench-value">$381</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Specialty 75th</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:78%;background:var(--apple-orange)"></div></div>
+            <span class="bench-value">$487</span>
+          </div>
+          <div class="bench-row">
+            <span class="bench-name">Specialty 90th</span>
+            <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:100%;background:var(--apple-green)"></div></div>
+            <span class="bench-value">$638</span>
+          </div>
+        </div>
+
+        <div style="padding:14px;background:rgba(255,55,95,0.05);border-radius:10px;border:1px solid rgba(255,55,95,0.12);margin-bottom:12px">
+          <div style="font-size:12px;font-weight:600;color:var(--apple-red);margin-bottom:4px">Top 3 Reasons for Gap</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">
+            1. Obesity systematically under-coded (E66.x family)<br>
+            2. HCC risk scores lower than peer average by 0.4 RAF<br>
+            3. E/M level selection conservative — avg 99213 vs peer avg 99214
+          </div>
+        </div>
+
+        <div style="padding:14px;background:rgba(48,209,88,0.05);border-radius:10px;border:1px solid rgba(48,209,88,0.12)">
+          <div style="font-size:12px;font-weight:600;color:#1a8c3a;margin-bottom:4px">✓ Kortexaa Action Plan</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">
+            If you capture E66.01 and 2 open HCC gaps over next 5 visits, projected revenue lift = <strong style="color:var(--apple-green)">+$12,400/quarter</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 8: BENCHMARK ═══════════════════════════ -->
+<div class="screen" id="s8">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 08 — Benchmark Leaderboard</div>
+    <h1>Competitive context.<br><em>Built into every decision.</em></h1>
+    <p>Anonymous peer intelligence tied to your actual data. The longer you use Kortexaa, the more defensible and proprietary the benchmarks become — a true data moat.</p>
+    <div class="banner-chips">
+      <span class="chip chip-blue">📊 Practice Network</span>
+      <span class="chip chip-orange">🏆 Specialty Rankings</span>
+      <span class="chip chip-green">📈 Trend Trajectories</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card">
+        <div class="card-title">Revenue Per Encounter — Practice Leaderboard</div>
+        <div class="bench-row" style="background:rgba(0,113,227,0.04);border-radius:8px;padding:10px 8px;border:1px solid rgba(0,113,227,0.1);margin-bottom:4px">
+          <span style="font-size:13px;font-weight:800;color:var(--apple-blue);min-width:24px">#1</span>
+          <span class="bench-name" style="font-weight:700">Dr. J. Patel</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:100%;background:var(--apple-green)"></div></div>
+          <span class="bench-value" style="color:var(--apple-green)">$612</span>
+        </div>
+        <div class="bench-row">
+          <span style="font-size:13px;font-weight:700;color:var(--text3);min-width:24px">#2</span>
+          <span class="bench-name">Dr. M. Torres</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:88%;background:var(--apple-blue)"></div></div>
+          <span class="bench-value">$539</span>
+        </div>
+        <div class="bench-row">
+          <span style="font-size:13px;font-weight:700;color:var(--text3);min-width:24px">#3</span>
+          <span class="bench-name">Dr. A. Khan</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:79%;background:var(--apple-blue)"></div></div>
+          <span class="bench-value">$484</span>
+        </div>
+        <div class="bench-row">
+          <span style="font-size:13px;font-weight:700;color:var(--text3);min-width:24px">#4</span>
+          <span class="bench-name">Dr. L. Chen</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:73%;background:var(--apple-orange)"></div></div>
+          <span class="bench-value">$447</span>
+        </div>
+        <div class="bench-row" style="background:rgba(191,90,242,0.04);border-radius:8px;padding:10px 8px;border:1px solid rgba(191,90,242,0.1)">
+          <span style="font-size:13px;font-weight:800;color:var(--apple-purple);min-width:24px">#5</span>
+          <span class="bench-name" style="color:var(--apple-purple);font-weight:700">Dr. Sarah K. (You)</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:52%;background:var(--apple-purple)"></div></div>
+          <span class="bench-value" style="color:var(--apple-purple)">$318</span>
+        </div>
+        <div style="margin-top:12px;font-size:12px;color:var(--text3);text-align:center">All data anonymized across practice network. Updated daily.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Coding Quality Score — By Provider</div>
+        <div class="bench-row">
+          <span style="min-width:24px;font-size:13px;font-weight:700;color:var(--apple-green)">#1</span>
+          <span class="bench-name">Dr. Sarah K. (You)</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:96%;background:var(--apple-green)"></div></div>
+          <span class="bench-value" style="color:var(--apple-green)">96</span>
+        </div>
+        <div class="bench-row">
+          <span style="min-width:24px;font-size:13px;font-weight:700;color:var(--text3)">#2</span>
+          <span class="bench-name">Dr. J. Patel</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:91%;background:var(--apple-blue)"></div></div>
+          <span class="bench-value">91</span>
+        </div>
+        <div class="bench-row">
+          <span style="min-width:24px;font-size:13px;font-weight:700;color:var(--text3)">#3</span>
+          <span class="bench-name">Dr. M. Torres</span>
+          <div class="bench-bar-wrap"><div class="bench-bar-fill" style="width:84%;background:var(--apple-blue)"></div></div>
+          <span class="bench-value">84</span>
+        </div>
+        <div style="margin-top:14px;padding:12px;background:rgba(48,209,88,0.05);border-radius:10px;border:1px solid rgba(48,209,88,0.12)">
+          <div style="font-size:12px;color:var(--text2)">🏆 You rank <strong>#1 in coding quality</strong> in your practice — the gap is revenue capture, not documentation accuracy. <strong style="color:var(--apple-green)">Opportunity: capture more codes with confidence.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">HCC RAF Score — Specialty Network Comparison (Internal Medicine)</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:4px">
+        <div style="text-align:center;padding:16px;background:var(--bg2);border-radius:10px">
+          <div style="font-size:24px;font-weight:800;color:var(--apple-red)">0.82</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Dr. Sarah K.</div>
+          <div style="font-size:10px;color:var(--apple-red)">Bottom 30th</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--bg2);border-radius:10px">
+          <div style="font-size:24px;font-weight:800;color:var(--apple-orange)">1.04</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Practice Avg</div>
+          <div style="font-size:10px;color:var(--apple-orange)">50th</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--bg2);border-radius:10px">
+          <div style="font-size:24px;font-weight:800;color:var(--apple-blue)">1.18</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Network Avg</div>
+          <div style="font-size:10px;color:var(--apple-blue)">50th Specialty</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--bg2);border-radius:10px">
+          <div style="font-size:24px;font-weight:800;color:var(--apple-blue)">1.34</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">75th Pctile</div>
+          <div style="font-size:10px;color:var(--text3)">Specialty</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(48,209,88,0.06);border-radius:10px;border:1px solid rgba(48,209,88,0.12)">
+          <div style="font-size:24px;font-weight:800;color:var(--apple-green)">1.62</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">90th Pctile</div>
+          <div style="font-size:10px;color:var(--apple-green)">Target</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:14px;background:rgba(0,113,227,0.04);border-radius:10px;border:1px solid rgba(0,113,227,0.1)">
+        <span style="font-size:12px;color:var(--text2)">💡 Capturing your 7 open HCC gaps (detected across active panel) would increase RAF score from <strong>0.82 → ~1.20</strong> — moving you from bottom 30th to practice-average and adding an estimated <strong style="color:var(--apple-green)">+$38,000/year</strong> in Medicare Advantage capitation revenue.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 9: COMPLIANCE ═══════════════════════════ -->
+<div class="screen" id="s9">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 09 — Compliance Alert Center</div>
+    <h1>Audit exposure. Seen before<br><em>the auditor does.</em></h1>
+    <p>Real-time compliance scoring, regulatory flag detection, and payer-specific risk patterns — all with mitigation steps, not just warnings.</p>
+    <div class="banner-chips">
+      <span class="chip chip-red">🔴 High Risk Patterns</span>
+      <span class="chip chip-orange">🟡 Regulatory Flags</span>
+      <span class="chip chip-blue">🛡 Mitigation Steps</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="kpi-card" style="--kpi-color:#30D158">
+        <div class="kpi-label">Overall Compliance Score</div>
+        <div class="kpi-value"><em>94</em>/100</div>
+        <div class="kpi-sub"><span class="kpi-trend-up">↑ 4pts</span> this month</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF375F">
+        <div class="kpi-label">Active High Alerts</div>
+        <div class="kpi-value"><em style="color:var(--apple-red)">2</em></div>
+        <div class="kpi-sub">Require immediate action</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF9F0A">
+        <div class="kpi-label">Medium Alerts</div>
+        <div class="kpi-value"><em style="color:var(--apple-orange)">5</em></div>
+        <div class="kpi-sub">Review before month end</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#0071E3">
+        <div class="kpi-label">Audit Probability</div>
+        <div class="kpi-value"><em>3.2</em>%</div>
+        <div class="kpi-sub">Below 5% threshold</div>
+      </div>
+    </div>
+
+    <div class="grid-main-side">
+      <div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">Active Compliance Alerts</div>
+
+          <div class="alert-card high">
+            <div class="alert-icon">🚨</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="alert-title">HIGH: 99215 Frequency Outlier — Medicare Review Trigger</div>
+                <span class="badge badge-red">HIGH</span>
+              </div>
+              <div class="alert-body">Your 99215 billing rate (68%) exceeds Medicare's specialty-adjusted expected rate (41%) by 27 percentage points. This pattern can trigger a Targeted Probe and Educate (TPE) review. Action required.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Review 99215 Encounters</button>
+                <button class="btn-dismiss">Add to Monitoring</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card high">
+            <div class="alert-icon">⚠</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="alert-title">HIGH: G47.33 — Pending Polysomnography Confirmation</div>
+                <span class="badge badge-red">HIGH</span>
+              </div>
+              <div class="alert-body">OSA code billed without confirmed polysomnography. Provisional coding acceptable per ICD-10-CM, but ensure sleep study is ordered and documented. Follow up required at next encounter or within 90 days.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Set 90-Day Reminder</button>
+                <button class="btn-dismiss">Already Ordered</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card medium">
+            <div class="alert-icon">⚡</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="alert-title">MED: Documentation Gap — Plan of Care for CHF</div>
+                <span class="badge badge-orange">MEDIUM</span>
+              </div>
+              <div class="alert-body">CHF management plan not explicitly documented in encounter note. Required for I50.22 medical necessity support under Medicare Advantage policies. Add a brief treatment plan before signing.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Open Note Editor</button>
+                <button class="btn-dismiss">Will Add</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card medium">
+            <div class="alert-icon">📋</div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="alert-title">MED: Modifier Missing — Telehealth Visit Documentation</div>
+                <span class="badge badge-orange">MEDIUM</span>
+              </div>
+              <div class="alert-body">3 of last 5 telehealth encounters missing required -95 modifier. Potential for recoupment on Medicare telehealth claims. Apply retroactively where possible.</div>
+              <div class="alert-actions">
+                <button class="btn-mitigate">Review Claims</button>
+                <button class="btn-dismiss">Corrected</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sticky-sidebar">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">Regulatory Monitor</div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">OIG Work Plan 2026 — High-risk CPT patterns</div>
+            <span class="badge badge-green">Clear</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-high"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">CMS TPE Risk — 99215 outlier</div>
+            <span class="badge badge-red">Active</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">HIPAA Documentation Compliance</div>
+            <span class="badge badge-green">Clear</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">Medicare HCC Attestation Requirements</div>
+            <span class="badge badge-green">On Track</span>
+          </div>
+          <div class="list-row">
+            <div class="sev-dot sev-med"></div>
+            <div style="font-size:12px;color:var(--text2);flex:1">Prior Auth Expiry — 3 upcoming</div>
+            <span class="badge badge-orange">Review</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Audit Probability Trend</div>
+          <div style="text-align:center;padding:12px 0">
+            <div style="font-size:36px;font-weight:800;color:var(--apple-green)">3.2%</div>
+            <div style="font-size:11px;color:var(--text3)">Current audit probability</div>
+            <div style="margin-top:16px">
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:4px"><span>0%</span><span>Safe ≤5%</span><span>10%</span></div>
+              <div class="progress-wrap" style="height:10px"><div class="progress-fill" style="width:32%;background:var(--apple-green)"></div></div>
+              <div style="margin-top:8px;font-size:12px;color:var(--text2)">↓ Dropped from 7.1% when 99215 outlier was flagged and remediated. Continued action on TPE alert will bring this below 2%.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 10: FEEDBACK LOOP ═══════════════════════════ -->
+<div class="screen" id="s10">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 10 — Feedback Loop Panel</div>
+    <h1>The model learns what you do.<br><em>The loop closes.</em></h1>
+    <p>Every accept and reject feeds a proprietary learning cycle. Over time, Kortexaa's suggestions become hyper-personalized to your coding patterns, specialty, payer mix, and documentation style.</p>
+    <div class="banner-chips">
+      <span class="chip chip-purple">🔁 Proprietary Loop</span>
+      <span class="chip chip-blue">🎯 Personalization</span>
+      <span class="chip chip-green">📈 Accuracy Over Time</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="kpi-card" style="--kpi-color:#30D158">
+        <div class="kpi-label">Acceptance Rate</div>
+        <div class="kpi-value"><em>87</em>%</div>
+        <div class="kpi-sub"><span class="kpi-trend-up">↑ 6%</span> from baseline</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#0071E3">
+        <div class="kpi-label">Model Accuracy (This Provider)</div>
+        <div class="kpi-value"><em>94</em>%</div>
+        <div class="kpi-sub">After personalization</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#BF5AF2">
+        <div class="kpi-label">Total Interactions</div>
+        <div class="kpi-value"><em>1,247</em></div>
+        <div class="kpi-sub">Feedback signals logged</div>
+      </div>
+      <div class="kpi-card" style="--kpi-color:#FF9F0A">
+        <div class="kpi-label">Revenue Lift Attributed</div>
+        <div class="kpi-value">$<em>44k</em></div>
+        <div class="kpi-sub">From accepted suggestions</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Recent Accept / Reject Log</div>
+        <div class="fb-row">
+          <span class="fb-accepted">✓</span>
+          <span class="fb-code">99215</span>
+          <span class="fb-outcome">Accepted Level 5 upgrade (this encounter)</span>
+          <span class="fb-lift">+$148</span>
+        </div>
+        <div class="fb-row">
+          <span class="fb-accepted">✓</span>
+          <span class="fb-code">I50.22</span>
+          <span class="fb-outcome">CHF acuity upgrade accepted</span>
+          <span class="fb-lift">+$67</span>
+        </div>
+        <div class="fb-row">
+          <span class="fb-rejected">✗</span>
+          <span class="fb-code">E66.01</span>
+          <span class="fb-outcome">Obesity deferred — provider preference noted</span>
+          <span class="delta delta-neg">Deferred</span>
+        </div>
+        <div class="fb-row">
+          <span class="fb-accepted">✓</span>
+          <span class="fb-code">E11.65</span>
+          <span class="fb-outcome">DM severity upgrade — glucose documented</span>
+          <span class="fb-lift">+$44</span>
+        </div>
+        <div class="fb-row">
+          <span class="fb-accepted">✓</span>
+          <span class="fb-code">N18.3</span>
+          <span class="fb-outcome">CKD combination code accepted</span>
+          <span class="fb-lift">+$38</span>
+        </div>
+        <div class="fb-row">
+          <span class="fb-rejected">✗</span>
+          <span class="fb-code">Z87.891</span>
+          <span class="fb-outcome">Tobacco history — provider declined (not discussed this visit)</span>
+          <span class="delta delta-neg">Deferred</span>
+        </div>
+        <div style="margin-top:14px;padding:10px;background:rgba(0,113,227,0.04);border-radius:8px;border:1px solid rgba(0,113,227,0.08);font-size:12px;color:var(--text2)">
+          💡 Model note: E66.01 has been declined 3 consecutive visits. Demoting confidence, flagging for explicit prompt next visit.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Model Personalization Progress</div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;font-weight:600">E/M Level Accuracy</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-green)">96%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:96%;background:var(--apple-green)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Was 72% at baseline · 342 training signals</div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;font-weight:600">HCC Code Recall</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-blue)">88%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:88%;background:var(--apple-blue)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Was 54% at baseline · 218 training signals</div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;font-weight:600">Specificity Upgrade Acceptance</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-orange)">71%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:71%;background:var(--apple-orange)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">Growing · 187 signals</div>
+        </div>
+        <div style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:12px;font-weight:600">False Positive Rate</span>
+            <span style="font-size:13px;font-weight:700;color:var(--apple-green)">6%</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-fill" style="width:6%;background:var(--apple-green)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:4px">↓ From 18% at baseline</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 0">
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600">Auto-Retrain Enabled</div>
+            <div style="font-size:11px;color:var(--text3)">Model updates weekly with your feedback signals (federated, zero raw data)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 11: EXECUTIVE DASHBOARD ═══════════════════════════ -->
+<div class="screen" id="s11">
+  <div class="screen-banner" style="background:linear-gradient(135deg,#0a0a10,#1a1a2e);color:#fff;border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div class="banner-eyebrow" style="color:rgba(255,255,255,0.4)"><span class="banner-dot" style="background:var(--apple-green)"></span>Screen 11 — Executive Roll-Up Dashboard · CFO View</div>
+    <h1 style="color:#fff">The CFO meeting just<br><em>got a lot shorter.</em></h1>
+    <p style="color:rgba(255,255,255,0.55)">Revenue lift, coding quality, audit exposure, and peer trajectory — all at a glance. Drill down to any encounter, any provider, any payer, any day.</p>
+    <div class="banner-chips">
+      <span class="chip" style="background:rgba(48,209,88,0.12);color:#30D158;border-color:rgba(48,209,88,0.2)">💰 Revenue Lift</span>
+      <span class="chip" style="background:rgba(0,113,227,0.12);color:#5ac8fa;border-color:rgba(0,113,227,0.2)">📊 Coding Quality</span>
+      <span class="chip" style="background:rgba(255,55,95,0.12);color:#ff6b8a;border-color:rgba(255,55,95,0.2)">🛡 Audit Risk</span>
+    </div>
+  </div>
+  <div class="screen-body" style="background:#111116">
+
+    <!-- Top KPIs - Dark -->
+    <div class="grid-4" style="margin-bottom:24px">
+      <div class="exec-dark" style="text-align:center">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Revenue Lift This Quarter</div>
+        <div style="font-size:40px;font-weight:800;color:var(--apple-green);letter-spacing:-2px">+$312k</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">↑ 23% vs prior quarter</div>
+      </div>
+      <div class="exec-dark" style="text-align:center">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Practice Coding Quality</div>
+        <div style="font-size:40px;font-weight:800;color:#fff;letter-spacing:-2px">89<span style="font-size:20px;opacity:0.5">/100</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">↑ 11pts since Kortexaa launch</div>
+      </div>
+      <div class="exec-dark" style="text-align:center">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Audit Risk Score</div>
+        <div style="font-size:40px;font-weight:800;color:var(--apple-orange);letter-spacing:-2px">3.2%</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">↓ from 7.1% at launch</div>
+      </div>
+      <div class="exec-dark" style="text-align:center">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Denial Rate</div>
+        <div style="font-size:40px;font-weight:800;color:var(--apple-green);letter-spacing:-2px">4.1%</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px">↓ from 12.4% at launch</div>
+      </div>
+    </div>
+
+    <div class="grid-main-side">
+      <!-- LEFT CHARTS -->
+      <div>
+        <!-- Revenue Trend Chart -->
+        <div style="background:#1C1C1E;border-radius:var(--r);padding:24px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <div style="color:#fff;font-size:14px;font-weight:600">Monthly Revenue Lift — Practice Total</div>
+            <div style="display:flex;gap:6px">
+              <span class="badge badge-green">+23% QoQ</span>
+              <span class="badge badge-blue">Annualized: +$1.24M</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:8px;height:120px;padding:0 8px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(0,113,227,0.4);height:60px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Oct</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(0,113,227,0.5);height:72px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Nov</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(0,113,227,0.55);height:78px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Dec</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+                <div style="position:absolute;top:-20px;background:var(--apple-blue);color:#fff;font-size:9px;padding:2px 6px;border-radius:4px;white-space:nowrap">Kortexaa Launch</div>
+                <div style="width:28px;border-radius:4px 4px 0 0;background:var(--apple-blue);height:68px"></div>
+              </div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:4px">Jan</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(48,209,88,0.5);height:84px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Feb</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(48,209,88,0.7);height:98px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Mar</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:rgba(48,209,88,0.85);height:108px"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.3)">Apr</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+              <div style="width:28px;border-radius:4px 4px 0 0;background:var(--apple-green);height:120px;box-shadow:0 0 16px rgba(48,209,88,0.4)"></div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.5)">May</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Provider Performance Table -->
+        <div style="background:#1C1C1E;border-radius:var(--r);padding:24px;border:1px solid rgba(255,255,255,0.06)">
+          <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:16px">Provider Performance — Quarterly</div>
+          <table class="data-table" style="color:rgba(255,255,255,0.8)">
+            <thead>
+              <tr>
+                <th style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)">Provider</th>
+                <th style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)">Rev/Encounter</th>
+                <th style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)">Kortexaa Lift</th>
+                <th style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)">Coding Score</th>
+                <th style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4)">Audit Risk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-color:rgba(255,255,255,0.06)">
+                <td style="color:#fff;font-weight:600;border-color:rgba(255,255,255,0.06)">Dr. J. Patel</td>
+                <td style="border-color:rgba(255,255,255,0.06)">$612</td>
+                <td style="color:var(--apple-green);font-weight:600;border-color:rgba(255,255,255,0.06)">+$218</td>
+                <td style="border-color:rgba(255,255,255,0.06)"><span class="badge badge-green">91</span></td>
+                <td style="color:var(--apple-green);border-color:rgba(255,255,255,0.06)">2.1%</td>
+              </tr>
+              <tr style="border-color:rgba(255,255,255,0.06)">
+                <td style="color:#fff;font-weight:600;border-color:rgba(255,255,255,0.06)">Dr. M. Torres</td>
+                <td style="border-color:rgba(255,255,255,0.06)">$539</td>
+                <td style="color:var(--apple-green);font-weight:600;border-color:rgba(255,255,255,0.06)">+$174</td>
+                <td style="border-color:rgba(255,255,255,0.06)"><span class="badge badge-blue">84</span></td>
+                <td style="color:var(--apple-green);border-color:rgba(255,255,255,0.06)">2.8%</td>
+              </tr>
+              <tr style="border-color:rgba(255,255,255,0.06)">
+                <td style="color:#fff;font-weight:600;border-color:rgba(255,255,255,0.06)">Dr. Sarah K.</td>
+                <td style="border-color:rgba(255,255,255,0.06)">$318</td>
+                <td style="color:var(--apple-orange);font-weight:600;border-color:rgba(255,255,255,0.06)">+$87</td>
+                <td style="border-color:rgba(255,255,255,0.06)"><span class="badge badge-green">96</span></td>
+                <td style="color:var(--apple-orange);border-color:rgba(255,255,255,0.06)">3.2%</td>
+              </tr>
+              <tr style="border-color:rgba(255,255,255,0.06)">
+                <td style="color:#fff;font-weight:600;border-color:rgba(255,255,255,0.06)">Dr. A. Khan</td>
+                <td style="border-color:rgba(255,255,255,0.06)">$484</td>
+                <td style="color:var(--apple-green);font-weight:600;border-color:rgba(255,255,255,0.06)">+$142</td>
+                <td style="border-color:rgba(255,255,255,0.06)"><span class="badge badge-orange">79</span></td>
+                <td style="color:var(--apple-red);border-color:rgba(255,255,255,0.06)">5.8%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="sticky-sidebar">
+        <div style="background:#1C1C1E;border-radius:var(--r);padding:20px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px">
+          <div class="mini-flywheel" style="margin-bottom:16px">
+            <div class="mfw-ring"></div>
+            <div class="mfw-ring"></div>
+            <div class="mfw-center">
+              <div class="mfw-val">$1.24<em>M</em></div>
+              <div class="mfw-lbl">ANNUALIZED LIFT</div>
+            </div>
+          </div>
+          <div style="text-align:center;color:rgba(255,255,255,0.5);font-size:12px">Revenue flywheel — accelerates with each encounter</div>
+        </div>
+
+        <div style="background:#1C1C1E;border-radius:var(--r);padding:20px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px">
+          <div style="color:rgba(255,255,255,0.4);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Denial Prevention</div>
+          <div class="list-row" style="border-color:rgba(255,255,255,0.06)">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);flex:1">Denials prevented this quarter</div>
+            <span style="font-weight:700;color:var(--apple-green);font-size:13px">47</span>
+          </div>
+          <div class="list-row" style="border-color:rgba(255,255,255,0.06)">
+            <div class="sev-dot sev-low"></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);flex:1">Revenue recovered from appeals</div>
+            <span style="font-weight:700;color:var(--apple-green);font-size:13px">$28k</span>
+          </div>
+          <div class="list-row" style="border-color:rgba(255,255,255,0.06)">
+            <div class="sev-dot sev-med"></div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);flex:1">Active denial appeals</div>
+            <span style="font-weight:700;color:var(--apple-orange);font-size:13px">12</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button class="btn-sm" style="flex:1">📊 Export PDF</button>
+          <button class="btn-sm-blue" style="flex:1">Share to Board</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ SCREEN 12: INTEGRATION & CONSENT ═══════════════════════════ -->
+<div class="screen" id="s12">
+  <div class="screen-banner">
+    <div class="banner-eyebrow"><span class="banner-dot"></span>Screen 12 — Integration & Consent Management</div>
+    <h1>Enterprise trust infrastructure.<br><em>Lock-tight by design.</em></h1>
+    <p>Every integration, every permission, every data flow — governed, logged, and auditable. This is the control plane that makes Kortexaa enterprise-deployable, not just clinically useful.</p>
+    <div class="banner-chips">
+      <span class="chip chip-blue">🔒 HIPAA Compliant</span>
+      <span class="chip chip-green">✅ SOC 2 Type II</span>
+      <span class="chip chip-orange">📋 Audit Logs</span>
+      <span class="chip chip-purple">🧬 Federated Privacy</span>
+    </div>
+  </div>
+  <div class="screen-body">
+    <div class="grid-2" style="margin-bottom:24px">
+      <!-- EHR Integrations -->
+      <div class="card">
+        <div class="card-title">EHR & System Integrations</div>
+        <div class="int-card">
+          <div class="int-icon" style="background:#0052CC10">🔵</div>
+          <div style="flex:1">
+            <div class="int-name">Epic MyChart / EHR</div>
+            <div class="int-status int-connected">● Connected · FHIR R4 · Read/Write</div>
+          </div>
+          <div class="int-actions">
+            <button class="btn-sm">Settings</button>
+            <button class="btn-sm">Disconnect</button>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon" style="background:#E8394910">🔴</div>
+          <div style="flex:1">
+            <div class="int-name">Oracle Cerner PowerChart</div>
+            <div class="int-status int-connected">● Connected · SMART on FHIR</div>
+          </div>
+          <div class="int-actions">
+            <button class="btn-sm">Settings</button>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon" style="background:#1DC94110">🟢</div>
+          <div style="flex:1">
+            <div class="int-name">Athenahealth</div>
+            <div class="int-status int-connected">● Connected · REST API</div>
+          </div>
+          <div class="int-actions">
+            <button class="btn-sm">Settings</button>
+          </div>
+        </div>
+        <div class="int-card">
+          <div class="int-icon" style="background:#F5A62310">🟡</div>
+          <div style="flex:1">
+            <div class="int-name">CMS Medicare Advantage Payer Feed</div>
+            <div class="int-status int-pending">⏳ Pending Auth · Est. 2 days</div>
+          </div>
+          <div class="int-actions">
+            <button class="btn-sm-blue">Authorize</button>
+          </div>
+        </div>
+        <div class="int-card" style="opacity:0.6">
+          <div class="int-icon" style="background:var(--bg2)">⚙️</div>
+          <div style="flex:1">
+            <div class="int-name">Custom SFTP / HL7 Feed</div>
+            <div class="int-status" style="color:var(--text3)">Not connected</div>
+          </div>
+          <div class="int-actions">
+            <button class="btn-sm-blue">Configure</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consent & Permissions -->
+      <div class="card">
+        <div class="card-title">Data Access Permissions</div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">Ambient Audio Capture</div>
+            <div class="perm-desc">On-device only. No audio transmitted externally.</div>
+          </div>
+          <div class="toggle on"></div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">PHI Access — Encounter Context</div>
+            <div class="perm-desc">Read-only from EHR. Never stored outside facility.</div>
+          </div>
+          <div class="toggle on"></div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">Federated Model Training</div>
+            <div class="perm-desc">Only model weights shared — no raw data. Differential privacy applied.</div>
+          </div>
+          <div class="toggle on"></div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">Benchmark Data Sharing (Anonymous)</div>
+            <div class="perm-desc">Contributes to anonymized peer network data.</div>
+          </div>
+          <div class="toggle on"></div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">External Payer API Write</div>
+            <div class="perm-desc">Submit pre-auth and prior auth requests automatically.</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-info">
+            <div class="perm-name">Executive Dashboard Export</div>
+            <div class="perm-desc">CFO/admin access to aggregate reporting.</div>
+          </div>
+          <div class="toggle on"></div>
+        </div>
+        <div style="margin-top:14px;padding:12px;background:rgba(48,209,88,0.05);border-radius:10px;border:1px solid rgba(48,209,88,0.12)">
+          <div style="font-size:12px;color:var(--text2)">🔒 BAA signed. All PHI processing is within your facility's security boundary. Kortexaa holds no PHI at rest.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit Log -->
+    <div class="card">
+      <div class="card-title">
+        Immutable Audit Log — Last 24 Hours
+        <div style="display:flex;gap:8px">
+          <button class="btn-sm">Filter</button>
+          <button class="btn-sm">Export</button>
+        </div>
+      </div>
+      <div class="log-row">
+        <span class="log-time">10:22:14</span>
+        <div style="flex:1"><span class="log-actor">Dr. Sarah K.</span> <span class="log-event">accepted code suggestion G47.33 — OSA, HCC eligible. Encounter #KTX-20260305-MGA</span></div>
+        <span class="badge badge-blue">Code Accept</span>
+      </div>
+      <div class="log-row">
+        <span class="log-time">10:21:38</span>
+        <div style="flex:1"><span class="log-actor">Kortexaa AI</span> <span class="log-event">generated Audit Defense Pack for encounter #KTX-20260305-MGA. 18 evidence sources linked.</span></div>
+        <span class="badge badge-green">Audit Pack</span>
+      </div>
+      <div class="log-row">
+        <span class="log-time">10:07:00</span>
+        <div style="flex:1"><span class="log-actor">Kortexaa AI</span> <span class="log-event">began ambient capture for encounter #KTX-20260305-MGA. On-device processing confirmed.</span></div>
+        <span class="badge badge-gray">Capture Start</span>
+      </div>
+      <div class="log-row">
+        <span class="log-time">09:44:02</span>
+        <div style="flex:1"><span class="log-actor">Dr. Michael S.</span> <span class="log-event">rejected code suggestion E66.01 — Obesity. Reason: deferred to next visit.</span></div>
+        <span class="badge badge-orange">Code Reject</span>
+      </div>
+      <div class="log-row">
+        <span class="log-time">09:12:55</span>
+        <div style="flex:1"><span class="log-actor">Admin: J. Williams</span> <span class="log-event">accessed Executive Dashboard. Exported Q1 Revenue Lift report (PDF).</span></div>
+        <span class="badge badge-purple">Admin Access</span>
+      </div>
+      <div class="log-row">
+        <span class="log-time">08:00:01</span>
+        <div style="flex:1"><span class="log-actor">System</span> <span class="log-event">Daily model weight sync completed. 312 new feedback signals processed (federated, zero PHI). Accuracy delta: +0.3%</span></div>
+        <span class="badge badge-green">Model Sync</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showScreen(id, btn) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Toggle interactivity
+document.querySelectorAll('.toggle').forEach(t => {
+  t.addEventListener('click', () => t.classList.toggle('on'));
+});
+
+// Animate progress bars on screen enter
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.progress-fill, .conf-bar-fill, .bench-bar-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card, .exec-dark').forEach(c => observer.observe(c));
+</script>
+</body>
+</html>
